@@ -1,0 +1,8 @@
+[
+  { "code": "fr", "label": "Français", "tts": "fr-FR", "enabled": true },
+  { "code": "wo", "label": "Wolof", "tts": null, "enabled": true, "note": "Pas de voix de synthèse wolof : le parent enregistre les consignes (Espace parent > Voix) ou des fichiers audio sont ajoutés dans public/audio/wo/." },
+  { "code": "ff", "label": "Pulaar", "tts": null, "enabled": false },
+  { "code": "srr", "label": "Sereer", "tts": null, "enabled": false },
+  { "code": "dyo", "label": "Joola", "tts": null, "enabled": false },
+  { "code": "mnk", "label": "Mandinka", "tts": null, "enabled": false }
+]

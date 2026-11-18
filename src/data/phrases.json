@@ -1,0 +1,27 @@
+{
+  "welcome": { "fr": "Bonjour ! Prêt(e) pour une petite activité ?", "wo": "Salaamaalekum ! Pare nga ngir benn liggéey bu ndaw ?" },
+  "today": { "fr": "Activité du jour", "wo": "Liggéeyu tey" },
+  "stars": { "fr": "Mes étoiles", "wo": "Samay biddiiw" },
+  "parent": { "fr": "Espace parent", "wo": "Bérébu waajur" },
+  "listen": { "fr": "Écouter", "wo": "Déglul" },
+  "next": { "fr": "Suivant", "wo": "Ci kanam" },
+  "done": { "fr": "J'ai fini", "wo": "Noppi naa" },
+  "again": { "fr": "Encore", "wo": "Waat" },
+  "home": { "fr": "Accueil", "wo": "Kër" },
+  "week": { "fr": "Semaine", "wo": "Ayubés" },
+  "bravoTitle": { "fr": "Bravo !", "wo": "Ndokklé !" },
+  "bravoText": { "fr": "Tu as gagné des étoiles !", "wo": "Am nga ay biddiiw !" },
+  "praise": [
+    { "fr": "Bravo !", "wo": "Ndokklé !" },
+    { "fr": "Très bien !", "wo": "Baax na lool !" },
+    { "fr": "Super !", "wo": "Baax na !" },
+    { "fr": "Tu es fort(e) !", "wo": "Am nga doole !" },
+    { "fr": "Génial !", "wo": "Neex na lool !" }
+  ],
+  "encourage": [
+    { "fr": "Presque ! Essaie encore.", "wo": "Bu yàgg ! Jéemaatal." },
+    { "fr": "Ce n'est pas grave. Regarde bien et réessaie.", "wo": "Amul solo. Xoolal bu baax te jéemaatal." },
+    { "fr": "Tu apprends ! On essaie encore ?", "wo": "Yaa ngi jàng ! Ñu jéemaat ?" }
+  ],
+  "reveal": { "fr": "Regarde, c'est celle-ci. On continue !", "wo": "Xoolal, lii la. Ñu dem ci kanam !" }
+}

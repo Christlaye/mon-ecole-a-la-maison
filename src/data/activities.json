@@ -1,0 +1,501 @@
+[
+  {
+    "id": "fr-01", "week": 1, "subject": "francais", "icon": "🏫", "notion": "Vocabulaire : l'école",
+    "title": { "fr": "À l'école", "wo": "Ci lekool" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute le mot et touche la bonne image.", "wo": "Déglul baat bi te laal nataal bu baax bi." },
+    "items": [
+      { "say": "Touche le cahier.", "label": "le cahier", "options": ["✏️", "📒", "🎒"], "answer": 1, "hint": "Le cahier, c'est là où on écrit.", "explain": "Voici le cahier 📒 : on écrit dedans." },
+      { "say": "Touche le crayon.", "label": "le crayon", "options": ["📒", "🪑", "✏️"], "answer": 2, "hint": "Le crayon sert à écrire et à dessiner.", "explain": "Voici le crayon ✏️." },
+      { "say": "Touche le cartable.", "label": "le cartable", "options": ["🎒", "📏", "🏫"], "answer": 0, "hint": "On met ses affaires dans le cartable.", "explain": "Voici le cartable 🎒." },
+      { "say": "Touche l'école.", "label": "l'école", "options": ["🏠", "🏫", "🏪"], "answer": 1, "hint": "C'est le grand bâtiment où on apprend.", "explain": "Voici l'école 🏫." },
+      { "say": "Touche la règle.", "label": "la règle", "options": ["📏", "✂️", "📒"], "answer": 0, "hint": "La règle est longue et droite.", "explain": "Voici la règle 📏." }
+    ],
+    "offscreen": { "fr": "Préparez ensemble le cartable : l'enfant nomme chaque objet en le rangeant (cahier, ardoise, craie, crayon).", "wo": "Defareleen saak bi ak moom : xale bi tudd bépp jumtukaay." }
+  },
+  {
+    "id": "ma-01", "week": 1, "subject": "maths", "icon": "🥭", "notion": "Compter de 1 à 5",
+    "title": { "fr": "Compte jusqu'à 5", "wo": "Waññ ba juróom" },
+    "type": "count",
+    "instruction": { "fr": "Touche chaque objet pour le compter. Puis choisis le bon nombre.", "wo": "Laal bépp lëf ngir waññ ko. Te tànn limu baax mi." },
+    "items": [
+      { "mode": "tap", "object": "🥭", "n": 3, "options": [2, 3, 4], "label": "mangues" },
+      { "mode": "tap", "object": "🐓", "n": 5, "options": [5, 3, 4], "label": "poules" },
+      { "mode": "tap", "object": "🐟", "n": 4, "options": [3, 5, 4], "label": "poissons" },
+      { "mode": "make", "object": "🥭", "n": 2, "label": "mangues", "say": "Mets 2 mangues dans le panier." },
+      { "mode": "make", "object": "🥜", "n": 5, "label": "arachides", "say": "Mets 5 arachides dans le panier." }
+    ],
+    "offscreen": { "fr": "Comptez avec de vrais objets : 5 cailloux, 5 bouchons ou 5 arachides. L'enfant touche chaque objet en disant le nombre.", "wo": "Waññleen ak yu dëgg : 5 doj, 5 gerte." }
+  },
+  {
+    "id": "de-01", "week": 1, "subject": "decouverte", "icon": "🐄", "notion": "Les animaux",
+    "title": { "fr": "Les animaux", "wo": "Mala yi" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute bien et touche le bon animal.", "wo": "Déglul bu baax te laal mala mu baax mi." },
+    "items": [
+      { "say": "Qui fait meuh ?", "label": "meuh !", "options": ["🐑", "🐄", "🐓"], "answer": 1, "hint": "C'est un gros animal qui donne du lait.", "explain": "La vache 🐄 fait meuh !" },
+      { "say": "Qui fait bêê ?", "label": "bêê !", "options": ["🐑", "🐈", "🐟"], "answer": 0, "hint": "On le voit beaucoup à la Tabaski.", "explain": "Le mouton 🐑 fait bêê !" },
+      { "say": "Qui chante cocorico le matin ?", "label": "cocorico !", "options": ["🐕", "🐐", "🐓"], "answer": 2, "hint": "Il a une crête rouge sur la tête.", "explain": "Le coq 🐓 chante cocorico !" },
+      { "say": "Quel animal vit dans l'eau ?", "label": "dans l'eau", "options": ["🐟", "🐄", "🐓"], "answer": 0, "hint": "Le pêcheur l'attrape avec son filet.", "explain": "Le poisson 🐟 vit dans l'eau." },
+      { "say": "Quel animal tire la charrette ?", "label": "la charrette", "options": ["🐈", "🐎", "🐓"], "answer": 1, "hint": "Il est grand et il court vite.", "explain": "Le cheval 🐎 tire la charrette." }
+    ],
+    "offscreen": { "fr": "En promenade, cherchez des animaux (chèvre, poule, chat…). L'enfant les nomme et imite leur cri.", "wo": "Bu ngeen di dox, wutleen ay mala, xale bi tudd leen." }
+  },
+
+  {
+    "id": "fr-02", "week": 2, "subject": "francais", "icon": "👪", "notion": "Vocabulaire : la famille",
+    "title": { "fr": "Ma famille", "wo": "Sama njaboot" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute et montre la bonne personne.", "wo": "Déglul te won nit ku baax ki." },
+    "items": [
+      { "say": "Montre la maman.", "label": "la maman", "options": ["👨🏾", "👩🏾", "👶🏾"], "answer": 1, "hint": "La maman porte souvent un foulard.", "explain": "Voici la maman 👩🏾." },
+      { "say": "Montre le papa.", "label": "le papa", "options": ["👨🏾", "👵🏾", "👧🏾"], "answer": 0, "hint": "Le papa a une barbe.", "explain": "Voici le papa 👨🏾." },
+      { "say": "Montre le bébé.", "label": "le bébé", "options": ["👴🏾", "👦🏾", "👶🏾"], "answer": 2, "hint": "C'est le plus petit de la famille.", "explain": "Voici le bébé 👶🏾." },
+      { "say": "Montre la grand-mère.", "label": "la grand-mère", "options": ["👩🏾", "👵🏾", "👧🏾"], "answer": 1, "hint": "Elle a les cheveux blancs.", "explain": "Voici la grand-mère 👵🏾, la mame." },
+      { "say": "Montre le grand-père.", "label": "le grand-père", "options": ["👴🏾", "👨🏾", "👦🏾"], "answer": 0, "hint": "Il est âgé, il a les cheveux blancs.", "explain": "Voici le grand-père 👴🏾." }
+    ],
+    "offscreen": { "fr": "Regardez une photo de famille. L'enfant montre et nomme chacun : maman, papa, frère, sœur, tante, grand-mère.", "wo": "Xoolleen nataalu njaboot, xale bi tudd ku nekk." }
+  },
+  {
+    "id": "le-01", "week": 2, "subject": "lecture", "icon": "🔠", "notion": "Majuscules et minuscules",
+    "title": { "fr": "Grandes et petites lettres", "wo": "Araf yu mag ak yu tuut" },
+    "type": "match",
+    "instruction": { "fr": "Relie la grande lettre à sa petite lettre. Touche une lettre à gauche, puis sa jumelle à droite.", "wo": "Boole araf bu mag ak araf bu tuut bi." },
+    "items": [
+      { "pairs": [["big:A", "big:a"], ["big:M", "big:m"], ["big:O", "big:o"]] },
+      { "pairs": [["big:I", "big:i"], ["big:L", "big:l"], ["big:P", "big:p"]] },
+      { "pairs": [["big:T", "big:t"], ["big:E", "big:e"], ["big:R", "big:r"], ["big:U", "big:u"]] }
+    ],
+    "offscreen": { "fr": "Écrivez A, M, O en grand sur une feuille et a, m, o sur des petits papiers. L'enfant pose chaque petit papier sur sa grande lettre.", "wo": "Bindal araf yi ci kayit, xale bi boole leen." }
+  },
+  {
+    "id": "ma-02", "week": 2, "subject": "maths", "icon": "🔢", "notion": "Reconnaître les chiffres 0 à 10",
+    "title": { "fr": "Les chiffres", "wo": "Lim yi" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute le nombre et touche le bon chiffre.", "wo": "Déglul lim bi te laal lim bu baax bi." },
+    "items": [
+      { "say": "Touche le chiffre 3.", "label": "trois", "options": ["big:8", "big:3", "big:5"], "answer": 1, "hint": "Trois, comme 🥭🥭🥭.", "explain": "Voici le 3 : 🥭🥭🥭." },
+      { "say": "Touche le chiffre 7.", "label": "sept", "options": ["big:7", "big:1", "big:4"], "answer": 0, "hint": "Le 7 a une barre en haut et descend en penchant.", "explain": "Voici le 7." },
+      { "say": "Le panier est vide. Combien de mangues ?", "prompt": "🧺", "label": "panier vide", "options": ["big:1", "big:2", "big:0"], "answer": 2, "hint": "Il n'y a rien dans le panier.", "explain": "Rien du tout, c'est zéro : 0." },
+      { "say": "Combien de doigts ?", "prompt": "✋🏾", "label": "une main", "options": ["big:4", "big:5", "big:6"], "answer": 1, "hint": "Compte tes doigts d'une main.", "explain": "Une main, c'est 5 doigts." },
+      { "say": "Touche le chiffre 10.", "label": "dix", "options": ["big:01", "big:10", "big:11"], "answer": 1, "hint": "Dix commence par 1 puis 0.", "explain": "Dix s'écrit 1 puis 0 : 10. Comme tes deux mains !" }
+    ],
+    "offscreen": { "fr": "Cherchez des chiffres autour de vous : sur les plaques, le calendrier, les prix au marché. L'enfant dit le chiffre qu'il reconnaît.", "wo": "Wutleen ay lim ci seen wet." }
+  },
+
+  {
+    "id": "fr-03", "week": 3, "subject": "francais", "icon": "🧺", "notion": "Écouter une histoire",
+    "title": { "fr": "{nom} au marché", "wo": "{nom} ci marse" },
+    "type": "story",
+    "instruction": { "fr": "Écoute l'histoire, puis réponds aux questions.", "wo": "Déglul léeb bi, te tontu laaj yi." },
+    "pages": [
+      { "v": "👧🏾 👩🏾 🧺", "text": "Ce matin, {nom} va au marché avec sa maman." },
+      { "v": "🥭x3", "text": "{nom} choisit trois belles mangues." },
+      { "v": "🐟 🐟", "text": "Maman achète deux poissons pour le thiéboudienne." },
+      { "v": "🏠 😊", "text": "{nom} rentre à la maison. Elle est très contente !" }
+    ],
+    "items": [
+      { "say": "Où va {nom} ?", "options": ["🏫", "🏪", "🏥"], "answer": 1, "hint": "Elle achète des fruits et du poisson.", "explain": "{nom} va au marché 🏪." },
+      { "say": "Combien de mangues choisit {nom} ?", "options": ["🥭x2", "🥭x3", "🥭x5"], "answer": 1, "hint": "Écoute encore : trois belles mangues.", "explain": "{nom} choisit trois mangues : 🥭🥭🥭." },
+      { "say": "Qu'est-ce que maman achète ?", "options": ["🐟", "🐓", "🍞"], "answer": 0, "hint": "C'est pour le thiéboudienne.", "explain": "Maman achète des poissons 🐟." }
+    ],
+    "offscreen": { "fr": "Au prochain passage au marché, laissez l'enfant compter les fruits que vous achetez et redire l'histoire de {nom}.", "wo": "Bu ngeen demee marse, xale bi waññ doomi garab yi." }
+  },
+  {
+    "id": "ma-03", "week": 3, "subject": "maths", "icon": "🔺", "notion": "Formes géométriques et tri",
+    "title": { "fr": "Les formes", "wo": "Melo yi" },
+    "type": "sort",
+    "instruction": { "fr": "Touche une forme, puis touche la bonne boîte.", "wo": "Laal benn melo, te laal ndab li ko war." },
+    "items": [
+      { "say": "Range les ronds avec le rond et les carrés avec le carré.", "bins": [{ "v": "shape:circle:#94A3B8", "label": "cercle" }, { "v": "shape:square:#94A3B8", "label": "carré" }], "objects": [{ "v": "shape:circle:#DC2626", "bin": 0 }, { "v": "shape:square:#2563EB", "bin": 1 }, { "v": "shape:circle:#F5B700", "bin": 0 }, { "v": "shape:square:#16A34A", "bin": 1 }] },
+      { "say": "Range chaque forme dans sa boîte : cercle, carré ou triangle.", "bins": [{ "v": "shape:circle:#94A3B8", "label": "cercle" }, { "v": "shape:square:#94A3B8", "label": "carré" }, { "v": "shape:triangle:#94A3B8", "label": "triangle" }], "objects": [{ "v": "shape:triangle:#DC2626", "bin": 2 }, { "v": "shape:circle:#2563EB", "bin": 0 }, { "v": "shape:square:#F5B700", "bin": 1 }, { "v": "shape:triangle:#16A34A", "bin": 2 }, { "v": "shape:circle:#7C3AED", "bin": 0 }] },
+      { "say": "Le rectangle est long. Range les rectangles et les carrés.", "bins": [{ "v": "shape:rectangle:#94A3B8", "label": "rectangle" }, { "v": "shape:square:#94A3B8", "label": "carré" }], "objects": [{ "v": "shape:rectangle:#DC2626", "bin": 0 }, { "v": "shape:square:#2563EB", "bin": 1 }, { "v": "shape:rectangle:#16A34A", "bin": 0 }, { "v": "shape:square:#F5B700", "bin": 1 }] },
+      { "say": "Range les objets ronds ensemble.", "bins": [{ "v": "shape:circle:#94A3B8", "label": "rond" }, { "v": "shape:square:#94A3B8", "label": "carré" }], "objects": [{ "v": "🍊", "bin": 0 }, { "v": "⚽", "bin": 0 }, { "v": "🖼️", "bin": 1 }, { "v": "🪟", "bin": 1 }] }
+    ],
+    "offscreen": { "fr": "Cherchez dans la maison des objets ronds (assiette, couvercle), carrés (carreau), rectangles (porte, cahier) et triangles. L'enfant les classe en tas.", "wo": "Wutleen ci kër gi lu wërngal ak lu am ñeent wet." }
+  },
+  {
+    "id": "de-02", "week": 3, "subject": "decouverte", "icon": "🍉", "notion": "Mémoire : les fruits",
+    "title": { "fr": "Mémoire des fruits", "wo": "Fàttalikul doomi garab" },
+    "type": "memory",
+    "instruction": { "fr": "Retourne deux cartes. Trouve les fruits pareils.", "wo": "Waññi ñaari kart. Wutal doomi garab yu niroo." },
+    "items": [
+      { "pairs": [["🥭", "🥭"], ["🍌", "🍌"], ["🍉", "🍉"]] },
+      { "pairs": [["🍊", "🍊"], ["🥥", "🥥"], ["🍋", "🍋"], ["🍍", "🍍"]] },
+      { "pairs": [["🥭", "🥭"], ["🥜", "🥜"], ["🍉", "🍉"], ["🍌", "🍌"], ["🥥", "🥥"]] }
+    ],
+    "offscreen": { "fr": "Posez 3 fruits sur la table, l'enfant les regarde puis ferme les yeux. Cachez-en un : lequel a disparu ?", "wo": "Teg 3 doomi garab, nëbb benn : ban moo réer ?" }
+  },
+
+  {
+    "id": "le-02", "week": 4, "subject": "lecture", "icon": "✍️", "notion": "Tracer des lettres",
+    "title": { "fr": "Trace les lettres", "wo": "Rëdd araf yi" },
+    "type": "trace",
+    "instruction": { "fr": "Suis les pointillés avec ton doigt.", "wo": "Toppal rëdd yi ak sa baaraam." },
+    "items": [
+      { "guide": "i", "say": "Trace la lettre i. Un trait qui descend, et un point." },
+      { "guide": "l", "say": "Trace la lettre l. Une grande boucle." },
+      { "guide": "o", "say": "Trace la lettre o. Un rond." },
+      { "guide": "a", "say": "Trace la lettre a. Un rond et un petit trait." },
+      { "guide": "m", "say": "Trace la lettre m. Un pont, deux ponts." }
+    ],
+    "offscreen": { "fr": "Tracez les lettres i, l, o, a, m dans le sable ou dans un plateau de farine. Puis sur l'ardoise.", "wo": "Rëddleen araf yi ci suuf si walla ci ardoaas bi." }
+  },
+  {
+    "id": "fr-04", "week": 4, "subject": "francais", "icon": "🎨", "notion": "Vocabulaire : les couleurs",
+    "title": { "fr": "Les couleurs", "wo": "Melo yi" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute la couleur et touche-la.", "wo": "Déglul melo bi te laal ko." },
+    "items": [
+      { "say": "Touche le rouge.", "label": "rouge", "options": ["color:#DC2626", "color:#2563EB", "color:#16A34A"], "answer": 0, "hint": "Rouge comme la tomate 🍅.", "explain": "Voici le rouge, comme la tomate 🍅." },
+      { "say": "Touche le jaune.", "label": "jaune", "options": ["color:#16A34A", "color:#FACC15", "color:#DC2626"], "answer": 1, "hint": "Jaune comme le soleil ☀️.", "explain": "Voici le jaune, comme le soleil ☀️." },
+      { "say": "Touche le vert.", "label": "vert", "options": ["color:#2563EB", "color:#FACC15", "color:#16A34A"], "answer": 2, "hint": "Vert comme les feuilles 🌿.", "explain": "Voici le vert, comme les feuilles 🌿." },
+      { "say": "De quelle couleur est le ciel ?", "prompt": "☁️ ☀️", "label": "le ciel", "options": ["color:#2563EB", "color:#DC2626", "color:#111827"], "answer": 0, "hint": "Lève les yeux dehors !", "explain": "Le ciel est bleu." },
+      { "say": "Quelles sont les couleurs du drapeau du Sénégal ?", "prompt": "🇸🇳", "label": "le drapeau", "options": ["color:#16A34A color:#FACC15 color:#DC2626", "color:#2563EB color:#FFFFFF color:#DC2626", "color:#111827 color:#FACC15 color:#DC2626"], "answer": 0, "hint": "Vert, jaune, rouge… avec une étoile verte.", "explain": "Vert, jaune, rouge : le drapeau du Sénégal 🇸🇳." }
+    ],
+    "offscreen": { "fr": "Jeu « Je vois quelque chose de… rouge ! » dans la maison ou dans la rue. L'enfant cherche un objet de la couleur.", "wo": "Po : « Gis naa lu xonq ! »" }
+  },
+  {
+    "id": "ma-04", "week": 4, "subject": "maths", "icon": "⚖️", "notion": "Comparer : plus, moins, autant",
+    "title": { "fr": "Plus, moins, autant", "wo": "Ëpp, gëna tuut, yem" },
+    "type": "choice",
+    "instruction": { "fr": "Regarde bien les paniers et touche le bon.", "wo": "Xoolal bu baax pañe yi te laal bu baax bi." },
+    "items": [
+      { "say": "Où y a-t-il le plus de mangues ?", "label": "le PLUS", "options": ["🥭x2", "🥭x5"], "answer": 1, "hint": "Compte les mangues de chaque côté.", "explain": "5, c'est plus que 2." },
+      { "say": "Où y a-t-il le moins de poissons ?", "label": "le MOINS", "options": ["🐟x4", "🐟x1", "🐟x3"], "answer": 1, "hint": "Cherche le panier presque vide.", "explain": "1 poisson, c'est le moins." },
+      { "say": "Ce panier a 3 œufs. Touche le panier qui en a autant.", "prompt": "🥚x3", "label": "AUTANT", "options": ["🥚x2", "🥚x4", "🥚x3"], "answer": 2, "hint": "Autant veut dire le même nombre.", "explain": "3 et 3 : c'est autant." },
+      { "say": "Où y a-t-il le plus de moutons ?", "label": "le PLUS", "options": ["🐑x3", "🐑x6", "🐑x4"], "answer": 1, "hint": "Compte bien chaque troupeau.", "explain": "6 moutons, c'est le plus." },
+      { "say": "Il y a 2 bananes. Touche le panier qui en a autant.", "prompt": "🍌x2", "label": "AUTANT", "options": ["🍌x2", "🍌x1", "🍌x3"], "answer": 0, "hint": "Il faut le même nombre : 2.", "explain": "2 et 2 : c'est autant." }
+    ],
+    "offscreen": { "fr": "Faites deux tas de cailloux. L'enfant dit où il y en a plus, moins, puis ajoute ou enlève pour qu'il y en ait autant.", "wo": "Defal ñaari mbooloo doj : ana fu ëpp ?" }
+  },
+
+  {
+    "id": "fr-05", "week": 5, "subject": "francais", "icon": "👂", "notion": "Le son [m]",
+    "title": { "fr": "Le son m", "wo": "Coow m" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute le son mmm. Touche l'image qui commence par mmm.", "wo": "Déglul coow mmm. Laal nataal bu tàmbalee ak mmm." },
+    "items": [
+      { "say": "mmm, comme maman. Touche ce qui commence par mmm.", "label": "mmm…", "options": ["🥭", "🐟", "🍌"], "answer": 0, "hint": "Dis chaque mot doucement : mangue, poisson, banane.", "explain": "mmm… mangue ! 🥭" },
+      { "say": "mmm. Touche ce qui commence par mmm.", "label": "mmm…", "options": ["🐓", "🐑", "🐐"], "answer": 1, "hint": "Dis : coq, mouton, chèvre.", "explain": "mmm… mouton ! 🐑" },
+      { "say": "mmm. Touche ce qui commence par mmm.", "label": "mmm…", "options": ["🚲", "🚗", "🏍️"], "answer": 2, "hint": "Dis : vélo, voiture, moto.", "explain": "mmm… moto ! 🏍️" },
+      { "say": "mmm. Touche ce qui commence par mmm.", "label": "mmm…", "options": ["🏠", "🍍", "🌳"], "answer": 0, "hint": "Dis : maison, ananas, arbre.", "explain": "mmm… maison ! 🏠" },
+      { "say": "Touche la lettre qui fait mmm.", "label": "la lettre", "options": ["big:a", "big:m", "big:p"], "answer": 1, "hint": "Elle a deux petits ponts.", "explain": "La lettre m fait mmm." }
+    ],
+    "offscreen": { "fr": "Cherchez ensemble des mots qui commencent par « m » : maman, mangue, moto, marché, mouton, Moussa…", "wo": "Wutleen baat yu tàmbalee ak « m »." }
+  },
+  {
+    "id": "ma-05", "week": 5, "subject": "maths", "icon": "🧮", "notion": "Compter jusqu'à 20",
+    "title": { "fr": "Compte jusqu'à 20", "wo": "Waññ ba ñaar-fukk" },
+    "type": "count",
+    "instruction": { "fr": "Touche chaque objet pour le compter. Puis choisis le bon nombre.", "wo": "Laal bépp lëf ngir waññ ko. Te tànn limu baax mi." },
+    "items": [
+      { "mode": "tap", "object": "🍊", "n": 7, "options": [6, 7, 8], "label": "oranges" },
+      { "mode": "tap", "object": "🐐", "n": 10, "options": [10, 9, 12], "label": "chèvres" },
+      { "mode": "make", "object": "🥚", "n": 9, "label": "œufs", "say": "Mets 9 œufs dans le panier." },
+      { "mode": "tap", "object": "⭐", "n": 13, "options": [12, 13, 15], "label": "étoiles" },
+      { "mode": "tap", "object": "🥜", "n": 16, "options": [16, 14, 18], "label": "arachides" }
+    ],
+    "offscreen": { "fr": "Comptez les marches de l'escalier, les assiettes ou les grains de maïs jusqu'à 20. Faites des paquets de 10 pour aider.", "wo": "Waññleen ba ñaar-fukk." }
+  },
+  {
+    "id": "de-03", "week": 5, "subject": "decouverte", "icon": "🖍️", "notion": "Coloriage",
+    "title": { "fr": "Je colorie", "wo": "Damay melal" },
+    "type": "coloring",
+    "instruction": { "fr": "Choisis une couleur, puis touche une partie du dessin.", "wo": "Tànnal benn melo, te laal benn wàll ci nataal bi." },
+    "items": [
+      { "drawing": "drapeau", "say": "Colorie le drapeau du Sénégal : vert, jaune, rouge, et l'étoile verte.", "model": true },
+      { "drawing": "poisson", "say": "Colorie le poisson avec tes couleurs préférées." },
+      { "drawing": "maison", "say": "Colorie la maison." }
+    ],
+    "offscreen": { "fr": "Avec des crayons de couleur, l'enfant dessine et colorie le drapeau du Sénégal sur une feuille. Accrochez-le au mur !", "wo": "Xale bi nataal raaya Senegaal ci kayit." }
+  },
+
+  {
+    "id": "le-03", "week": 6, "subject": "lecture", "icon": "📛", "notion": "Écrire son prénom",
+    "title": { "fr": "Mon prénom", "wo": "Sama tur" },
+    "type": "trace",
+    "instruction": { "fr": "Trace ton prénom avec ton doigt.", "wo": "Rëddal sa tur ak sa baaraam." },
+    "items": [
+      { "guide": "{PRENOM}", "say": "Trace ton prénom en grandes lettres." },
+      { "guide": "{prenom}", "say": "Maintenant, trace ton prénom en petites lettres." },
+      { "guide": "{prenom}", "say": "Encore une fois, doucement.", "mode": "copy" }
+    ],
+    "offscreen": { "fr": "Écrivez le prénom de l'enfant sur une feuille. Il le recopie dessous, puis le décore. Mettez-le sur sa porte ou son cahier.", "wo": "Bindal turu xale bi, mu bind ko ci suuf." }
+  },
+  {
+    "id": "fr-06", "week": 6, "subject": "francais", "icon": "✋🏾", "notion": "Vocabulaire : le corps",
+    "title": { "fr": "Mon corps", "wo": "Sama yaram" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute et touche la bonne partie du corps.", "wo": "Déglul te laal wàllu yaram wu baax wi." },
+    "items": [
+      { "say": "Touche la main.", "label": "la main", "options": ["🦶🏾", "✋🏾", "👂🏾"], "answer": 1, "hint": "On l'utilise pour écrire et pour manger.", "explain": "Voici la main ✋🏾." },
+      { "say": "Touche le pied.", "label": "le pied", "options": ["🦶🏾", "👃🏾", "👁️"], "answer": 0, "hint": "On marche avec.", "explain": "Voici le pied 🦶🏾." },
+      { "say": "Touche l'oreille.", "label": "l'oreille", "options": ["👄", "👂🏾", "✋🏾"], "answer": 1, "hint": "On écoute avec.", "explain": "Voici l'oreille 👂🏾 : on écoute avec." },
+      { "say": "Touche le nez.", "label": "le nez", "options": ["👁️", "🦶🏾", "👃🏾"], "answer": 2, "hint": "On sent les odeurs avec.", "explain": "Voici le nez 👃🏾 : on sent avec." },
+      { "say": "Touche la bouche.", "label": "la bouche", "options": ["👄", "👂🏾", "👁️"], "answer": 0, "hint": "On mange et on parle avec.", "explain": "Voici la bouche 👄." }
+    ],
+    "offscreen": { "fr": "Jeu « Jacques a dit » : touche ta tête, ton nez, tes genoux… L'enfant peut aussi donner les ordres !", "wo": "Po : « Laalal sa bopp, sa bakkan… »" }
+  },
+  {
+    "id": "de-04", "week": 6, "subject": "decouverte", "icon": "🗂️", "notion": "Trier et classer",
+    "title": { "fr": "Jeu de tri", "wo": "Po wute" },
+    "type": "sort",
+    "instruction": { "fr": "Touche une image, puis la bonne boîte.", "wo": "Laal benn nataal, te laal ndab li ko war." },
+    "items": [
+      { "say": "Les fruits d'un côté, les animaux de l'autre.", "bins": [{ "v": "🥭", "label": "fruits" }, { "v": "🐑", "label": "animaux" }], "objects": [{ "v": "🍌", "bin": 0 }, { "v": "🐓", "bin": 1 }, { "v": "🍉", "bin": 0 }, { "v": "🐐", "bin": 1 }, { "v": "🍊", "bin": 0 }] },
+      { "say": "Ce qui vole dans le ciel, et ce qui nage dans l'eau.", "bins": [{ "v": "☁️", "label": "vole" }, { "v": "🌊", "label": "nage" }], "objects": [{ "v": "🐦", "bin": 0 }, { "v": "🐟", "bin": 1 }, { "v": "🦋", "bin": 0 }, { "v": "🐢", "bin": 1 }] },
+      { "say": "Les objets de l'école, et les objets de la cuisine.", "bins": [{ "v": "🏫", "label": "école" }, { "v": "🍲", "label": "cuisine" }], "objects": [{ "v": "✏️", "bin": 0 }, { "v": "🥄", "bin": 1 }, { "v": "📒", "bin": 0 }, { "v": "🫖", "bin": 1 }, { "v": "🎒", "bin": 0 }] }
+    ],
+    "offscreen": { "fr": "Après le linge ou les courses, l'enfant trie : chaussettes par paires, fruits et légumes, cuillères et fourchettes.", "wo": "Xale bi wute yére yi walla doomi garab yi." }
+  },
+
+  {
+    "id": "ma-06", "week": 7, "subject": "maths", "icon": "📦", "notion": "Se repérer dans l'espace",
+    "title": { "fr": "Sur, sous, devant…", "wo": "Ci kaw, ci suuf…" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute bien et touche la bonne image.", "wo": "Déglul bu baax te laal nataal bu baax bi." },
+    "items": [
+      { "say": "Le chat est sur la boîte.", "label": "SUR", "options": ["scene:sous:🐈:📦", "scene:sur:🐈:📦", "scene:droite:🐈:📦"], "answer": 1, "hint": "Sur, c'est en haut, posé dessus.", "explain": "Le chat est SUR la boîte." },
+      { "say": "La balle est sous la chaise.", "label": "SOUS", "options": ["scene:sous:⚽:🪑", "scene:sur:⚽:🪑", "scene:gauche:⚽:🪑"], "answer": 0, "hint": "Sous, c'est en dessous.", "explain": "La balle est SOUS la chaise." },
+      { "say": "Le poussin est devant la poule.", "label": "DEVANT", "options": ["scene:derriere:🐤:🐔", "scene:devant:🐤:🐔", "scene:sur:🐤:🐔"], "answer": 1, "hint": "Devant, on le voit en entier, rien ne le cache.", "explain": "Le poussin est DEVANT la poule." },
+      { "say": "Le chien est derrière l'arbre.", "label": "DERRIÈRE", "options": ["scene:devant:🐕:🌳", "scene:droite:🐕:🌳", "scene:derriere:🐕:🌳"], "answer": 2, "hint": "Derrière, il est un peu caché.", "explain": "Le chien est DERRIÈRE l'arbre : il est caché." },
+      { "say": "La mangue est à gauche du panier. Lève la main qui écrit : souvent, c'est la droite.", "label": "À GAUCHE", "options": ["scene:droite:🥭:🧺", "scene:gauche:🥭:🧺"], "answer": 1, "hint": "Montre ta main gauche avec l'aide de ton parent.", "explain": "La mangue est à GAUCHE du panier." }
+    ],
+    "offscreen": { "fr": "Cachez un objet (sur la table, sous le lit, derrière la porte). L'enfant le cherche et dit où il était avec le bon mot.", "wo": "Nëbbleen benn lëf, xale bi wut ko te wax fu mu nekkoon." }
+  },
+  {
+    "id": "le-04", "week": 7, "subject": "lecture", "icon": "🔤", "notion": "Syllabes avec m",
+    "title": { "fr": "ma, me, mi, mo, mu", "wo": "ma, me, mi, mo, mu" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute la syllabe et touche-la.", "wo": "Déglul baat bu ndaw bi te laal ko." },
+    "items": [
+      { "say": "m et a, ça fait ma.", "prompt": "big:m + big:a", "label": "m + a", "options": ["big:ma", "big:am", "big:mi"], "answer": 0, "hint": "On dit d'abord mmm, puis a.", "explain": "m + a = ma, comme maman." },
+      { "say": "Touche : mi.", "label": "mi", "options": ["big:mo", "big:mi", "big:ma"], "answer": 1, "hint": "mi, comme midi.", "explain": "Voici mi : m + i." },
+      { "say": "Touche : mo.", "label": "mo", "options": ["big:mu", "big:me", "big:mo"], "answer": 2, "hint": "mo, comme moto.", "explain": "Voici mo : m + o." },
+      { "say": "Touche : mu.", "label": "mu", "options": ["big:mu", "big:ma", "big:mi"], "answer": 0, "hint": "mu, comme mur.", "explain": "Voici mu : m + u." },
+      { "say": "ma et ma, ça fait maman… presque ! Touche ma ma.", "label": "ma ma", "options": ["big:mi mi", "big:ma ma", "big:mo mo"], "answer": 1, "hint": "Comme quand tu appelles ta maman.", "explain": "ma ma : maman !" }
+    ],
+    "offscreen": { "fr": "Écrivez m, a, i, o, u sur des petits papiers. L'enfant assemble m + une voyelle et lit la syllabe à voix haute.", "wo": "Bindal araf yi ci kayit yu tuut, xale bi boole leen." }
+  },
+  {
+    "id": "de-05", "week": 7, "subject": "decouverte", "icon": "🤸🏾", "notion": "Motricité (hors écran)",
+    "title": { "fr": "Je bouge !", "wo": "Damay yengu !" },
+    "type": "parent",
+    "instruction": { "fr": "On pose le téléphone. Fais l'activité avec ton parent, puis touche « C'est fait ».", "wo": "Teg telefon bi. Def liggéey bi ak sa waajur." },
+    "items": [
+      { "v": "🪨x5", "text": "Ramassez 10 petits cailloux. L'enfant les aligne bien droit, du plus petit au plus grand." },
+      { "v": "📰 ✂️", "text": "Déchirez du vieux papier en petits morceaux et collez-les pour faire un soleil." },
+      { "v": "🦶🏾", "text": "Sautez 5 fois sur un pied, puis 5 fois sur l'autre pied." },
+      { "v": "🧵 🍝", "text": "Enfilez des pâtes ou des perles sur une ficelle pour faire un collier." }
+    ],
+    "offscreen": { "fr": "Ces activités renforcent la main pour l'écriture : à refaire souvent, quelques minutes par jour.", "wo": "Liggéey yii dañuy dooleel loxo bi ngir bind." }
+  },
+
+  {
+    "id": "fr-07", "week": 8, "subject": "francais", "icon": "🔡", "notion": "Première et dernière lettre",
+    "title": { "fr": "La lettre qui manque", "wo": "Araf bi des" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute le mot. Quelle lettre manque ?", "wo": "Déglul baat bi. Ban araf moo des ?" },
+    "items": [
+      { "say": "poisson. Quelle lettre manque au début ?", "prompt": "🐟 big:_oisson", "options": ["big:p", "big:m", "big:t"], "answer": 0, "hint": "ppp… poisson.", "explain": "p : poisson." },
+      { "say": "mangue. Quelle lettre manque au début ?", "prompt": "🥭 big:_angue", "options": ["big:l", "big:m", "big:a"], "answer": 1, "hint": "mmm… mangue.", "explain": "m : mangue." },
+      { "say": "ananas. Quelle lettre manque au début ?", "prompt": "🍍 big:_nanas", "options": ["big:o", "big:i", "big:a"], "answer": 2, "hint": "aaa… ananas.", "explain": "a : ananas." },
+      { "say": "papa. Quelle lettre manque à la fin ?", "prompt": "👨🏾 big:pap_", "options": ["big:a", "big:o", "big:i"], "answer": 0, "hint": "papa finit comme il commence : pa.", "explain": "a : papa." },
+      { "say": "lion. Quelle lettre manque à la fin ?", "prompt": "🦁 big:lio_", "options": ["big:m", "big:n", "big:l"], "answer": 1, "hint": "Le n a un seul pont.", "explain": "n : lion." }
+    ],
+    "offscreen": { "fr": "Jeu du premier son : vous dites un mot (table, sac, lit), l'enfant dit le premier son. Puis on inverse les rôles.", "wo": "Wax benn baat, xale bi wax coow bu jëkk bi." }
+  },
+  {
+    "id": "ma-07", "week": 8, "subject": "maths", "icon": "🔁", "notion": "Suites logiques",
+    "title": { "fr": "Qu'est-ce qui vient ?", "wo": "Lan moo topp ?" },
+    "type": "choice",
+    "instruction": { "fr": "Regarde la suite. Qu'est-ce qui vient après ?", "wo": "Xoolal ni mu toppante. Lan moo topp ?" },
+    "items": [
+      { "say": "Rouge, bleu, rouge, bleu, rouge… et après ?", "prompt": "🔴 🔵 🔴 🔵 🔴 ❓", "options": ["🔴", "🔵", "🟡"], "answer": 1, "hint": "Rouge, bleu, rouge, bleu… chacun son tour.", "explain": "Après rouge vient bleu 🔵." },
+      { "say": "Mangue, banane, mangue, banane… et après ?", "prompt": "🥭 🍌 🥭 🍌 ❓", "options": ["🍌", "🥭", "🍊"], "answer": 1, "hint": "Après la banane, il y a toujours…", "explain": "Après banane vient mangue 🥭." },
+      { "say": "1, 2, 3, 4… et après ?", "prompt": "big:1 big:2 big:3 big:4 ❓", "options": ["big:6", "big:3", "big:5"], "answer": 2, "hint": "Compte : 1, 2, 3, 4…", "explain": "Après 4 vient 5." },
+      { "say": "Mouton, mouton, chèvre, mouton, mouton… et après ?", "prompt": "🐑 🐑 🐐 🐑 🐑 ❓", "options": ["🐐", "🐑", "🐄"], "answer": 0, "hint": "Deux moutons, puis une…", "explain": "Deux moutons, puis une chèvre 🐐." },
+      { "say": "Cercle, triangle, cercle, triangle… et après ?", "prompt": "shape:circle:#2563EB shape:triangle:#DC2626 shape:circle:#2563EB shape:triangle:#DC2626 ❓", "options": ["shape:triangle:#DC2626", "shape:square:#16A34A", "shape:circle:#2563EB"], "answer": 2, "hint": "Après le triangle vient…", "explain": "Après le triangle vient le cercle." }
+    ],
+    "offscreen": { "fr": "Faites un collier ou une rangée avec des objets : bouchon, caillou, bouchon, caillou… L'enfant continue la suite.", "wo": "Defal benn toppante ak ay lëf, xale bi topp ko." }
+  },
+  {
+    "id": "de-06", "week": 8, "subject": "decouverte", "icon": "🧑🏾‍🔧", "notion": "Les métiers",
+    "title": { "fr": "Qui fait quoi ?", "wo": "Kan moo def lan ?" },
+    "type": "match",
+    "instruction": { "fr": "Relie chaque métier à son outil.", "wo": "Boole bépp liggéey ak jumtukaayam." },
+    "items": [
+      { "say": "Le médecin, le cultivateur, la cuisinière.", "pairs": [["👩🏾‍⚕️", "🩺"], ["👨🏾‍🌾", "🌱"], ["🧑🏾‍🍳", "🍲"]] },
+      { "say": "Le maître, le mécanicien, le pompier.", "pairs": [["🧑🏾‍🏫", "📚"], ["🧑🏾‍🔧", "🔧"], ["🧑🏾‍🚒", "🚒"]] },
+      { "say": "Le pêcheur, le tailleur, le chauffeur.", "pairs": [["🛶", "🐟"], ["🧵", "👗"], ["🚌", "🛣️"]] }
+    ],
+    "offscreen": { "fr": "Parlez des métiers des gens que vous connaissez : tonton est tailleur, tata vend au marché… Que veut faire l'enfant plus tard ?", "wo": "Waxleen ci liggéeyu nit ñi ngeen xam." }
+  },
+
+  {
+    "id": "fr-08", "week": 9, "subject": "francais", "icon": "💬", "notion": "Mots fréquents",
+    "title": { "fr": "Les petits mots", "wo": "Baat yu ndaw yi" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute le petit mot et touche-le.", "wo": "Déglul baat bu ndaw bi te laal ko." },
+    "items": [
+      { "say": "Touche le mot : et.", "label": "et", "options": ["big:le", "big:et", "big:un"], "answer": 1, "hint": "Il a deux lettres : e et t.", "explain": "et : e, t." },
+      { "say": "Touche le mot : un.", "label": "un", "options": ["big:un", "big:il", "big:la"], "answer": 0, "hint": "Il commence par u.", "explain": "un : u, n." },
+      { "say": "Touche le mot : la.", "label": "la", "options": ["big:le", "big:il", "big:la"], "answer": 2, "hint": "l et a : la.", "explain": "la : l, a." },
+      { "say": "Touche le mot : est.", "label": "est", "options": ["big:et", "big:est", "big:les"], "answer": 1, "hint": "Il a trois lettres : e, s, t.", "explain": "est : e, s, t. Comme dans « Awa est contente »." },
+      { "say": "Touche le mot : il.", "label": "il", "options": ["big:il", "big:le", "big:un"], "answer": 0, "hint": "Il commence par i.", "explain": "il : i, l." }
+    ],
+    "offscreen": { "fr": "Écrivez les petits mots (le, la, un, et, est, il) sur des cartes. Cherchez-les ensemble dans un livre ou un journal.", "wo": "Bindal baat yi ci kart yi, wutleen leen ci benn téére." }
+  },
+  {
+    "id": "ma-08", "week": 9, "subject": "maths", "icon": "➕", "notion": "Petites additions",
+    "title": { "fr": "J'ajoute", "wo": "Damay yokk" },
+    "type": "choice",
+    "instruction": { "fr": "Compte tous les objets ensemble. Combien ça fait ?", "wo": "Waññ lépp. Ñaata la ?" },
+    "items": [
+      { "say": "2 mangues et encore 1 mangue. Combien en tout ?", "prompt": "🥭x2 + 🥭x1", "options": ["big:2", "big:3", "big:4"], "answer": 1, "hint": "Compte toutes les mangues, une par une.", "explain": "2 + 1 = 3 🥭🥭🥭." },
+      { "say": "3 poissons et 2 poissons. Combien en tout ?", "prompt": "🐟x3 + 🐟x2", "options": ["big:5", "big:4", "big:6"], "answer": 0, "hint": "Compte avec tes doigts.", "explain": "3 + 2 = 5." },
+      { "say": "4 œufs et 3 œufs. Combien en tout ?", "prompt": "🥚x4 + 🥚x3", "options": ["big:6", "big:8", "big:7"], "answer": 2, "hint": "Commence à 4 et continue : 5, 6, 7…", "explain": "4 + 3 = 7." },
+      { "say": "5 bonbons et 5 bonbons. Combien en tout ?", "prompt": "🍬x5 + 🍬x5", "options": ["big:10", "big:9", "big:55"], "answer": 0, "hint": "Comme tes deux mains !", "explain": "5 + 5 = 10, comme deux mains." },
+      { "say": "Moussa a 3 billes. Son ami lui en donne 3. Combien en a-t-il ?", "prompt": "👦🏾 🔵x3 + 🔵x3", "options": ["big:5", "big:6", "big:3"], "answer": 1, "hint": "Il en avait 3, il en reçoit encore 3.", "explain": "3 + 3 = 6 billes." }
+    ],
+    "offscreen": { "fr": "Avec des cailloux : faites un tas de 3, ajoutez-en 2. L'enfant compte le total. Changez les nombres (jusqu'à 10).", "wo": "Ak ay doj : 3 yokk 2, ñaata la ?" }
+  },
+  {
+    "id": "le-05", "week": 9, "subject": "lecture", "icon": "📝", "notion": "Copier des mots",
+    "title": { "fr": "Je copie", "wo": "Damay bind" },
+    "type": "trace",
+    "instruction": { "fr": "Regarde le mot et écris-le en dessous avec ton doigt.", "wo": "Xoolal baat bi te bind ko ci suuf ak sa baaraam." },
+    "items": [
+      { "guide": "papa", "mode": "copy", "say": "Écris : papa." },
+      { "guide": "maman", "mode": "copy", "say": "Écris : maman." },
+      { "guide": "ami", "mode": "copy", "say": "Écris : ami." },
+      { "guide": "moto", "mode": "copy", "say": "Écris : moto." }
+    ],
+    "offscreen": { "fr": "Sur l'ardoise ou le cahier, l'enfant copie papa, maman, ami, moto. Vérifiez la tenue du crayon.", "wo": "Ci ardoaas bi, xale bi bind baat yi." }
+  },
+
+  {
+    "id": "fr-09", "week": 10, "subject": "francais", "icon": "🗨️", "notion": "Décrire une image à l'oral",
+    "title": { "fr": "Raconte l'image", "wo": "Nettalil nataal bi" },
+    "type": "parent",
+    "instruction": { "fr": "Regarde l'image avec ton parent et parle de ce que tu vois.", "wo": "Xoolal nataal bi ak sa waajur te wax li nga gis." },
+    "items": [
+      { "v": "🏠 👨🏾 👩🏾 👧🏾 👦🏾 🍲", "text": "Demandez : « Qui vois-tu ? Que font-ils ? » Aidez l'enfant à faire une phrase : « La famille mange le repas. »" },
+      { "v": "🏪 👩🏾 🥭 🍌 🐟 🧺", "text": "Demandez : « Où sont-ils ? Qu'est-ce qu'on vend ici ? » Encouragez les mots : marché, vendeuse, mangues, poissons." },
+      { "v": "🏫 🧑🏾‍🏫 👧🏾 👦🏾 📚", "text": "Demandez : « C'est où ? Qui est le monsieur ? Et toi, que fais-tu à l'école ? »" },
+      { "v": "🌳 ☀️ 🐐 👦🏾 ⚽", "text": "Demandez : « Quel temps fait-il ? Que fait le garçon ? » L'enfant invente une petite histoire." }
+    ],
+    "offscreen": { "fr": "Le soir, demandez à l'enfant de raconter sa journée en 3 phrases : le matin, à midi, le soir.", "wo": "Ci ngoon, xale bi nettali bésam." }
+  },
+  {
+    "id": "ma-09", "week": 10, "subject": "maths", "icon": "🪙", "notion": "Le franc CFA",
+    "title": { "fr": "Les sous", "wo": "Xaalis bi" },
+    "type": "choice",
+    "instruction": { "fr": "Regarde les pièces et touche la bonne réponse.", "wo": "Xoolal pees yi te laal tontu bu baax bi." },
+    "items": [
+      { "say": "Touche la pièce de 100 francs.", "label": "100 F", "options": ["coin:50", "coin:100", "coin:25"], "answer": 1, "hint": "Cherche le nombre 100 : un, zéro, zéro.", "explain": "Voici la pièce de 100 francs." },
+      { "say": "Touche la pièce de 50 francs.", "label": "50 F", "options": ["coin:10", "coin:200", "coin:50"], "answer": 2, "hint": "Cherche le 5 et le 0.", "explain": "Voici la pièce de 50 francs." },
+      { "say": "Une mangue coûte 50 francs. Quelle main a assez pour l'acheter ?", "prompt": "🥭 big:50 F", "options": ["coin:25", "coin:25 coin:25", "coin:10"], "answer": 1, "hint": "25 et 25, ça fait combien ?", "explain": "25 + 25 = 50 francs : c'est assez !" },
+      { "say": "Combien d'argent ? 10, 20, 30…", "prompt": "coin:10 coin:10 coin:10", "options": ["big:20 F", "big:30 F", "big:10 F"], "answer": 1, "hint": "Compte de 10 en 10 : 10, 20…", "explain": "10, 20, 30 : 30 francs." },
+      { "say": "Le pain coûte 100 francs. J'ai deux pièces de 50 francs. C'est assez ?", "prompt": "🥖 coin:50 coin:50", "options": ["👍🏾", "👎🏾"], "answer": 0, "hint": "50 et 50, ça fait…", "explain": "50 + 50 = 100 : oui, c'est assez pour le pain !" }
+    ],
+    "offscreen": { "fr": "Jouez à la boutique avec de vraies pièces (25, 50, 100 F) : l'enfant « achète » des objets de la maison et paie le bon prix.", "wo": "Fecleen bitig ak pees yu dëgg." }
+  },
+  {
+    "id": "de-07", "week": 10, "subject": "decouverte", "icon": "✏️", "notion": "Dessin guidé",
+    "title": { "fr": "Je dessine", "wo": "Damay rëdd" },
+    "type": "trace",
+    "instruction": { "fr": "Suis les pointillés avec ton doigt pour faire le dessin.", "wo": "Toppal rëdd yi ak sa baaraam ngir def nataal bi." },
+    "items": [
+      { "path": "M50 30 A20 20 0 1 1 49.9 30 M50 10 L50 2 M50 90 L50 98 M10 50 L2 50 M90 50 L98 50 M22 22 L16 16 M78 22 L84 16 M22 78 L16 84 M78 78 L84 84", "say": "Dessine le soleil : un rond, puis des rayons.", "label": "le soleil" },
+      { "path": "M20 50 L50 20 L80 50 M25 50 L25 90 L75 90 L75 50 M42 90 L42 70 L58 70 L58 90", "say": "Dessine la maison : le toit, les murs, la porte.", "label": "la maison" },
+      { "path": "M15 50 Q45 15 75 50 Q45 85 15 50 M75 50 L95 32 L95 68 Z M30 45 L32 45", "say": "Dessine le poisson : le corps, puis la queue.", "label": "le poisson" }
+    ],
+    "offscreen": { "fr": "Sur une feuille, dessinez ensemble un soleil, une maison et un poisson. L'enfant les colorie ensuite.", "wo": "Rëddleen jant, kër ak jën ci kayit." }
+  },
+
+  {
+    "id": "le-06", "week": 11, "subject": "lecture", "icon": "🔗", "notion": "Associer lettre, son et image",
+    "title": { "fr": "Lettre, son, image", "wo": "Araf, coow, nataal" },
+    "type": "match",
+    "instruction": { "fr": "Relie chaque lettre à l'image qui commence par son son.", "wo": "Boole bépp araf ak nataal bu tàmbalee ak coowam." },
+    "items": [
+      { "say": "m comme mangue, p comme poisson, b comme banane.", "pairs": [["big:m", "🥭"], ["big:p", "🐟"], ["big:b", "🍌"]] },
+      { "say": "l comme lion, v comme vache, t comme tortue.", "pairs": [["big:l", "🦁"], ["big:v", "🐄"], ["big:t", "🐢"]] },
+      { "say": "a comme ananas, s comme serpent, f comme feu, ch comme chat.", "pairs": [["big:a", "🍍"], ["big:s", "🐍"], ["big:f", "🔥"], ["big:ch", "🐈"]] }
+    ],
+    "offscreen": { "fr": "Jeu « Dans mon panier, il y a… » : chacun dit un objet qui commence par le son choisi (m : mangue, mouton, montre…).", "wo": "Po : « Ci sama pañe am na… »" }
+  },
+  {
+    "id": "fr-10", "week": 11, "subject": "francais", "icon": "🐑", "notion": "Écouter une histoire",
+    "title": { "fr": "Le mouton de {nom}", "wo": "Xaru {nom}" },
+    "type": "story",
+    "instruction": { "fr": "Écoute l'histoire, puis réponds aux questions.", "wo": "Déglul léeb bi, te tontu laaj yi." },
+    "pages": [
+      { "v": "👧🏾 🐑", "text": "{nom} a un petit mouton blanc. Il s'appelle Ndaw." },
+      { "v": "🌿 🐑", "text": "Chaque matin, {nom} donne de l'herbe à Ndaw." },
+      { "v": "💧 🐑", "text": "Le soir, elle lui donne de l'eau fraîche." },
+      { "v": "👧🏾 ❤️ 🐑", "text": "{nom} aime beaucoup son mouton." }
+    ],
+    "items": [
+      { "say": "Quel animal a {nom} ?", "options": ["🐐", "🐑", "🐄"], "answer": 1, "hint": "Il est blanc et fait bêê.", "explain": "{nom} a un mouton 🐑." },
+      { "say": "Que mange Ndaw le matin ?", "options": ["🌿", "🍞", "🐟"], "answer": 0, "hint": "C'est vert et ça pousse par terre.", "explain": "Ndaw mange de l'herbe 🌿." },
+      { "say": "Que boit Ndaw le soir ?", "options": ["🥛", "💧", "🍵"], "answer": 1, "hint": "De l'eau fraîche…", "explain": "Ndaw boit de l'eau 💧." }
+    ],
+    "offscreen": { "fr": "Demandez à l'enfant de raconter l'histoire de {nom} avec ses mots, puis d'inventer la suite.", "wo": "Xale bi nettali léebu {nom}." }
+  },
+  {
+    "id": "ma-10", "week": 11, "subject": "maths", "icon": "➖", "notion": "Soustractions et petits problèmes",
+    "title": { "fr": "J'enlève", "wo": "Damay wàññi" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute le petit problème et touche la réponse.", "wo": "Déglul laaj bi te laal tontu bi." },
+    "items": [
+      { "say": "Il y a 5 oranges. On en mange 2. Combien en reste-t-il ?", "prompt": "🍊x5 - 🍊x2", "options": ["big:3", "big:2", "big:7"], "answer": 0, "hint": "Cache 2 oranges avec ton doigt et compte les autres.", "explain": "5 − 2 = 3 oranges." },
+      { "say": "Fatou a 4 bonbons. Elle en donne 1 à son frère. Combien lui en reste-t-il ?", "prompt": "👧🏾 🍬x4", "options": ["big:5", "big:3", "big:4"], "answer": 1, "hint": "Elle en a moins qu'avant.", "explain": "4 − 1 = 3 bonbons." },
+      { "say": "6 oiseaux sont sur l'arbre. 2 s'envolent. Combien restent sur l'arbre ?", "prompt": "🌳 🐦x6", "options": ["big:4", "big:8", "big:2"], "answer": 0, "hint": "Enlève les 2 qui partent.", "explain": "6 − 2 = 4 oiseaux." },
+      { "say": "Modou a 2 billes. Il en gagne 3. Combien en a-t-il maintenant ?", "prompt": "👦🏾 🔵x2 + 🔵x3", "options": ["big:1", "big:5", "big:6"], "answer": 1, "hint": "Il en gagne : il en a plus.", "explain": "2 + 3 = 5 billes." },
+      { "say": "Il y a 7 poissons dans la pirogue. Le pêcheur en vend 4. Combien en reste-t-il ?", "prompt": "🛶 🐟x7", "options": ["big:3", "big:4", "big:11"], "answer": 0, "hint": "Compte à rebours : 7, 6, 5, 4…", "explain": "7 − 4 = 3 poissons." }
+    ],
+    "offscreen": { "fr": "Racontez des petits problèmes avec de vrais objets : « J'ai 5 arachides, j'en mange 2… » L'enfant manipule et répond.", "wo": "Defleen ay laaj ak lëf yu dëgg." }
+  },
+
+  {
+    "id": "le-07", "week": 12, "subject": "lecture", "icon": "📖", "notion": "Lire de courtes phrases",
+    "title": { "fr": "Je lis une phrase", "wo": "Damay jàng benn kàddu" },
+    "type": "choice",
+    "instruction": { "fr": "Lis la phrase avec ton parent. Touche la bonne image.", "wo": "Jàngal kàddu gi ak sa waajur. Laal nataal bu baax bi." },
+    "items": [
+      { "prompt": "t:Papa lit.", "say": "Papa lit.", "autoSay": false, "options": ["👨🏾 📖", "👨🏾 🍲", "👨🏾 💤"], "answer": 0, "hint": "lit, c'est lire un livre.", "explain": "Papa lit un livre 📖." },
+      { "prompt": "t:Le chat dort.", "say": "Le chat dort.", "autoSay": false, "options": ["🐈 🍽️", "🐈 💤", "🐈 ⚽"], "answer": 1, "hint": "dort : il a les yeux fermés.", "explain": "Le chat dort 💤." },
+      { "prompt": "t:{nom} a une mangue.", "say": "{nom} a une mangue.", "autoSay": false, "options": ["👧🏾 🍌", "👧🏾 🐟", "👧🏾 🥭"], "answer": 2, "hint": "mangue commence par m.", "explain": "{nom} a une mangue 🥭." },
+      { "prompt": "t:Moussa a une moto.", "say": "Moussa a une moto.", "autoSay": false, "options": ["👦🏾 🏍️", "👦🏾 🚲", "👦🏾 🐑"], "answer": 0, "hint": "mo… to.", "explain": "Moussa a une moto 🏍️." }
+    ],
+    "offscreen": { "fr": "Écrivez une petite phrase sur l'ardoise (« Papa lit. »). L'enfant la lit et la mime.", "wo": "Bindal benn kàddu gu gàtt, xale bi jàng ko." }
+  },
+  {
+    "id": "le-08", "week": 12, "subject": "lecture", "icon": "🔤", "notion": "Syllabes avec p, l, t",
+    "title": { "fr": "pa, la, to…", "wo": "pa, la, to…" },
+    "type": "choice",
+    "instruction": { "fr": "Écoute et touche la bonne syllabe ou le bon mot.", "wo": "Déglul te laal baat bu baax bi." },
+    "items": [
+      { "say": "Touche : pa.", "label": "pa", "options": ["big:pa", "big:ap", "big:po"], "answer": 0, "hint": "p puis a.", "explain": "p + a = pa." },
+      { "say": "Touche : li.", "label": "li", "options": ["big:la", "big:li", "big:lo"], "answer": 1, "hint": "li, comme lit.", "explain": "l + i = li." },
+      { "say": "pa et pa, ça fait papa. Touche papa.", "prompt": "big:pa + big:pa", "options": ["big:papa", "big:mama", "big:pipa"], "answer": 0, "hint": "Deux fois pa.", "explain": "pa + pa = papa." },
+      { "say": "mo et to, ça fait moto. Touche moto.", "prompt": "big:mo + big:to", "options": ["big:tomo", "big:moto", "big:mito"], "answer": 1, "hint": "On commence par mo.", "explain": "mo + to = moto 🏍️." },
+      { "say": "la et ma, ça fait lama. Touche lama.", "prompt": "big:la + big:ma", "options": ["big:mala", "big:lima", "big:lama"], "answer": 2, "hint": "On commence par la.", "explain": "la + ma = lama." }
+    ],
+    "offscreen": { "fr": "Faites des cartes-syllabes (pa, ma, la, to, mo). L'enfant en colle deux pour former des mots : papa, moto, lama, tomate…", "wo": "Defal ay kart, xale bi boole leen." }
+  },
+  {
+    "id": "de-08", "week": 12, "subject": "decouverte", "icon": "🃏", "notion": "Mémoire : nombres et quantités",
+    "title": { "fr": "Grand jeu de mémoire", "wo": "Po fàttaliku bu mag" },
+    "type": "memory",
+    "instruction": { "fr": "Retourne deux cartes. Trouve le chiffre et le bon nombre d'objets.", "wo": "Waññi ñaari kart. Wutal lim bi ak lëf yi ko yem." },
+    "items": [
+      { "pairs": [["big:2", "🥭x2"], ["big:3", "🐟x3"], ["big:1", "🐑x1"]] },
+      { "pairs": [["big:4", "🍊x4"], ["big:5", "🥚x5"], ["big:2", "🐓x2"], ["big:3", "🍌x3"]] }
+    ],
+    "offscreen": { "fr": "Fabriquez un mémory en papier : cartes-chiffres et cartes avec des points. Jouez à tour de rôle en famille.", "wo": "Defleen mémory ci kayit, fecc ko ak njaboot gi." }
+  }
+]
