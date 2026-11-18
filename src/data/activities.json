@@ -43,7 +43,7 @@
   },
 
   {
-    "id": "fr-02", "week": 2, "subject": "francais", "icon": "👨🏾‍👩🏾‍👧🏾", "notion": "Vocabulaire : la famille",
+    "id": "fr-02", "week": 2, "subject": "francais", "icon": "👪", "notion": "Vocabulaire : la famille",
     "title": { "fr": "Ma famille", "wo": "Sama njaboot" },
     "type": "choice",
     "instruction": { "fr": "Écoute et montre la bonne personne.", "wo": "Déglul te won nit ku baax ki." },
@@ -85,21 +85,21 @@
 
   {
     "id": "fr-03", "week": 3, "subject": "francais", "icon": "🧺", "notion": "Écouter une histoire",
-    "title": { "fr": "Awa au marché", "wo": "Awa ci marse" },
+    "title": { "fr": "{nom} au marché", "wo": "{nom} ci marse" },
     "type": "story",
     "instruction": { "fr": "Écoute l'histoire, puis réponds aux questions.", "wo": "Déglul léeb bi, te tontu laaj yi." },
     "pages": [
-      { "v": "👧🏾 👩🏾 🧺", "text": "Ce matin, Awa va au marché avec sa maman." },
-      { "v": "🥭x3", "text": "Awa choisit trois belles mangues." },
+      { "v": "👧🏾 👩🏾 🧺", "text": "Ce matin, {nom} va au marché avec sa maman." },
+      { "v": "🥭x3", "text": "{nom} choisit trois belles mangues." },
       { "v": "🐟 🐟", "text": "Maman achète deux poissons pour le thiéboudienne." },
-      { "v": "🏠 😊", "text": "Awa rentre à la maison. Elle est très contente !" }
+      { "v": "🏠 😊", "text": "{nom} rentre à la maison. Elle est très contente !" }
     ],
     "items": [
-      { "say": "Où va Awa ?", "options": ["🏫", "🏪", "🏥"], "answer": 1, "hint": "Elle achète des fruits et du poisson.", "explain": "Awa va au marché 🏪." },
-      { "say": "Combien de mangues choisit Awa ?", "options": ["🥭x2", "🥭x3", "🥭x5"], "answer": 1, "hint": "Écoute encore : trois belles mangues.", "explain": "Awa choisit trois mangues : 🥭🥭🥭." },
+      { "say": "Où va {nom} ?", "options": ["🏫", "🏪", "🏥"], "answer": 1, "hint": "Elle achète des fruits et du poisson.", "explain": "{nom} va au marché 🏪." },
+      { "say": "Combien de mangues choisit {nom} ?", "options": ["🥭x2", "🥭x3", "🥭x5"], "answer": 1, "hint": "Écoute encore : trois belles mangues.", "explain": "{nom} choisit trois mangues : 🥭🥭🥭." },
       { "say": "Qu'est-ce que maman achète ?", "options": ["🐟", "🐓", "🍞"], "answer": 0, "hint": "C'est pour le thiéboudienne.", "explain": "Maman achète des poissons 🐟." }
     ],
-    "offscreen": { "fr": "Au prochain passage au marché, laissez l'enfant compter les fruits que vous achetez et redire l'histoire d'Awa.", "wo": "Bu ngeen demee marse, xale bi waññ doomi garab yi." }
+    "offscreen": { "fr": "Au prochain passage au marché, laissez l'enfant compter les fruits que vous achetez et redire l'histoire de {nom}.", "wo": "Bu ngeen demee marse, xale bi waññ doomi garab yi." }
   },
   {
     "id": "ma-03", "week": 3, "subject": "maths", "icon": "🔺", "notion": "Formes géométriques et tri",
@@ -429,21 +429,21 @@
   },
   {
     "id": "fr-10", "week": 11, "subject": "francais", "icon": "🐑", "notion": "Écouter une histoire",
-    "title": { "fr": "Le mouton de Moussa", "wo": "Xaru Musaa" },
+    "title": { "fr": "Le mouton de {nom}", "wo": "Xaru {nom}" },
     "type": "story",
     "instruction": { "fr": "Écoute l'histoire, puis réponds aux questions.", "wo": "Déglul léeb bi, te tontu laaj yi." },
     "pages": [
-      { "v": "👦🏾 🐑", "text": "Moussa a un petit mouton blanc. Il s'appelle Ndaw." },
-      { "v": "🌿 🐑", "text": "Chaque matin, Moussa donne de l'herbe à Ndaw." },
-      { "v": "💧 🐑", "text": "Le soir, il lui donne de l'eau fraîche." },
-      { "v": "👦🏾 ❤️ 🐑", "text": "Moussa aime beaucoup son mouton." }
+      { "v": "👧🏾 🐑", "text": "{nom} a un petit mouton blanc. Il s'appelle Ndaw." },
+      { "v": "🌿 🐑", "text": "Chaque matin, {nom} donne de l'herbe à Ndaw." },
+      { "v": "💧 🐑", "text": "Le soir, elle lui donne de l'eau fraîche." },
+      { "v": "👧🏾 ❤️ 🐑", "text": "{nom} aime beaucoup son mouton." }
     ],
     "items": [
-      { "say": "Quel animal a Moussa ?", "options": ["🐐", "🐑", "🐄"], "answer": 1, "hint": "Il est blanc et fait bêê.", "explain": "Moussa a un mouton 🐑." },
+      { "say": "Quel animal a {nom} ?", "options": ["🐐", "🐑", "🐄"], "answer": 1, "hint": "Il est blanc et fait bêê.", "explain": "{nom} a un mouton 🐑." },
       { "say": "Que mange Ndaw le matin ?", "options": ["🌿", "🍞", "🐟"], "answer": 0, "hint": "C'est vert et ça pousse par terre.", "explain": "Ndaw mange de l'herbe 🌿." },
       { "say": "Que boit Ndaw le soir ?", "options": ["🥛", "💧", "🍵"], "answer": 1, "hint": "De l'eau fraîche…", "explain": "Ndaw boit de l'eau 💧." }
     ],
-    "offscreen": { "fr": "Demandez à l'enfant de raconter l'histoire de Moussa avec ses mots, puis d'inventer la suite.", "wo": "Xale bi nettali léebu Musaa." }
+    "offscreen": { "fr": "Demandez à l'enfant de raconter l'histoire de {nom} avec ses mots, puis d'inventer la suite.", "wo": "Xale bi nettali léebu {nom}." }
   },
   {
     "id": "ma-10", "week": 11, "subject": "maths", "icon": "➖", "notion": "Soustractions et petits problèmes",
@@ -468,7 +468,7 @@
     "items": [
       { "prompt": "t:Papa lit.", "say": "Papa lit.", "autoSay": false, "options": ["👨🏾 📖", "👨🏾 🍲", "👨🏾 💤"], "answer": 0, "hint": "lit, c'est lire un livre.", "explain": "Papa lit un livre 📖." },
       { "prompt": "t:Le chat dort.", "say": "Le chat dort.", "autoSay": false, "options": ["🐈 🍽️", "🐈 💤", "🐈 ⚽"], "answer": 1, "hint": "dort : il a les yeux fermés.", "explain": "Le chat dort 💤." },
-      { "prompt": "t:Awa a une mangue.", "say": "Awa a une mangue.", "autoSay": false, "options": ["👧🏾 🍌", "👧🏾 🐟", "👧🏾 🥭"], "answer": 2, "hint": "mangue commence par m.", "explain": "Awa a une mangue 🥭." },
+      { "prompt": "t:{nom} a une mangue.", "say": "{nom} a une mangue.", "autoSay": false, "options": ["👧🏾 🍌", "👧🏾 🐟", "👧🏾 🥭"], "answer": 2, "hint": "mangue commence par m.", "explain": "{nom} a une mangue 🥭." },
       { "prompt": "t:Moussa a une moto.", "say": "Moussa a une moto.", "autoSay": false, "options": ["👦🏾 🏍️", "👦🏾 🚲", "👦🏾 🐑"], "answer": 0, "hint": "mo… to.", "explain": "Moussa a une moto 🏍️." }
     ],
     "offscreen": { "fr": "Écrivez une petite phrase sur l'ardoise (« Papa lit. »). L'enfant la lit et la mime.", "wo": "Bindal benn kàddu gu gàtt, xale bi jàng ko." }

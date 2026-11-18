@@ -51,7 +51,7 @@ function Body({ a, name }) {
   switch (a.type) {
     case 'story':
       return (<>
-        <Box><b>L’histoire (à lire à l’enfant) :</b>{a.pages.map((p, k) => <p key={k} className="mt-2 flex items-center gap-3"><Visual v={p.v} size={30} /> {p.text}</p>)}</Box>
+        <Box><b>L’histoire (à lire à l’enfant) :</b>{a.pages.map((p, k) => <p key={k} className="mt-2 flex items-center gap-3"><Visual v={p.v} size={26} className="shrink-0 !flex-nowrap" /> {p.text}</p>)}</Box>
         <ChoiceList items={a.items} />
       </>);
     case 'choice': return <ChoiceList items={a.items} />;

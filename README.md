@@ -50,6 +50,8 @@ Ajouter une activité : copier un bloc dans `activities.json` (ou passer par l'�
 }
 ```
 
+Le texte `{nom}` est remplacé par le prénom de l'enfant (il devient le héros des histoires), `{PRENOM}` par son prénom en majuscules.
+
 Visuels sans image à télécharger (léger) : emojis et petits codes — `🥭x3` (3 mangues), `coin:100` / `bill:1000` (francs CFA), `shape:circle:#DC2626`, `color:#16A34A`, `big:ma` (grosses lettres), `scene:sous:⚽:🪑` (position), `t:Une phrase.` (texte).
 
 ## Audio

@@ -27,7 +27,7 @@ export default function Admin({ editId }) {
   return (
     <div className="flex flex-col gap-3">
       <Card>
-        <p className="text-sm">Créez ou modifiez une activité sans coder. Vos activités sont enregistrées sur ce téléphone. Les visuels utilisent des emojis (🥭, 🐑…) et quelques codes simples : <code>🥭x3</code> (3 mangues), <code>coin:100</code> (pièce), <code>shape:circle:#DC2626</code> (forme), <code>big:ma</code> (grosses lettres).</p>
+        <p className="text-sm">Créez ou modifiez une activité sans coder. Vos activités sont enregistrées sur ce téléphone. Les visuels utilisent des emojis (🥭, 🐑…) et quelques codes simples : <code>🥭x3</code> (3 mangues), <code>coin:100</code> (pièce), <code>shape:circle:#DC2626</code> (forme), <code>big:ma</code> (grosses lettres). Écrivez <code>{'{nom}'}</code> pour le prénom de l’enfant.</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Btn color="vert" onClick={() => go('#/admin/nouveau-choice')}>➕ Questions à images</Btn>
           <Btn color="terre" onClick={() => go('#/admin/nouveau-count')}>➕ Comptage</Btn>
@@ -57,7 +57,7 @@ const inp = 'w-full rounded-xl border-2 border-slate-200 p-2';
 function Editor({ id }) {
   const s = useStore();
   const isNew = id.startsWith('nouveau-');
-  const [a, setA] = useState(() => (isNew ? blank(id.replace('nouveau-', '')) : JSON.parse(JSON.stringify(getActivity(id, s) || blank()))));
+  const [a, setA] = useState(() => (isNew ? blank(id.replace('nouveau-', '')) : JSON.parse(JSON.stringify(getActivity(id, s, { raw: true }) || blank()))));
   const [json, setJson] = useState(false);
   const [jsonText, setJsonText] = useState('');
   const [msg, setMsg] = useState('');
