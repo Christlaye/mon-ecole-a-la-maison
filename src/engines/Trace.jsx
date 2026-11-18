@@ -26,9 +26,10 @@ export default function Trace({ items, onFinish }) {
 
   useLayoutEffect(() => {
     const w = Math.min(wrap.current.clientWidth, 520);
-    const h = item.path ? Math.min(w, 380) : Math.round(w * 0.62);
+    const lines = guide ? guide.split(' ').filter(Boolean).length : 1;
+    const h = item.path ? Math.min(w, 380) : Math.round(w * (lines > 1 && mode === 'trace' ? 0.5 * Math.min(lines, 3) : 0.62));
     setSize({ w, h });
-  }, [i]);
+  }, [i, guide]);
 
   useEffect(() => {
     setFb(null); setTries(0);
@@ -50,16 +51,24 @@ export default function Trace({ items, onFinish }) {
         ctx.setLineDash([3, 3]); ctx.lineWidth = 2.2 / s * 1.4; ctx.strokeStyle = '#64748B'; ctx.stroke(p);
       }
     } else if (guide && mode === 'trace') {
-      let px = h * 0.78;
+      // un prénom composé (« Marie Angélique ») est tracé sur plusieurs lignes
+      const words = guide.split(' ').filter(Boolean);
+      const rowH = h / words.length;
+      let px = rowH * 0.78;
       ctx.font = FONT(px);
-      while (ctx.measureText(guide).width > w * 0.92 && px > 24) { px -= 4; ctx.font = FONT(px); }
+      const widest = () => Math.max(...words.map((t) => ctx.measureText(t).width));
+      while (widest() > w * 0.92 && px > 24) { px -= 4; ctx.font = FONT(px); }
       ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-      const y = h * 0.5 + px * 0.33;
-      if (forMask) { ctx.fillStyle = '#000'; ctx.fillText(guide, w / 2, y); ctx.lineWidth = 10; ctx.strokeStyle = '#000'; ctx.strokeText(guide, w / 2, y); }
-      else {
-        ctx.fillStyle = '#EEF2F7'; ctx.fillText(guide, w / 2, y);
-        ctx.setLineDash([6, 6]); ctx.lineWidth = 3; ctx.strokeStyle = '#64748B'; ctx.strokeText(guide, w / 2, y);
-      }
+      words.forEach((t, r) => {
+        const y = rowH * r + rowH * 0.5 + px * 0.33;
+        if (forMask) { ctx.fillStyle = '#000'; ctx.fillText(t, w / 2, y); ctx.lineWidth = 10; ctx.strokeStyle = '#000'; ctx.strokeText(t, w / 2, y); }
+        else {
+          ctx.save();
+          ctx.fillStyle = '#EEF2F7'; ctx.fillText(t, w / 2, y);
+          ctx.setLineDash([6, 6]); ctx.lineWidth = 3; ctx.strokeStyle = '#64748B'; ctx.strokeText(t, w / 2, y);
+          ctx.restore();
+        }
+      });
     }
     ctx.restore();
   };

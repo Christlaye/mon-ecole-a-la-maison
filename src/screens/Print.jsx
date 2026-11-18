@@ -99,7 +99,7 @@ function Body({ a, name }) {
           {it.path
             ? <svg viewBox="0 0 100 100" className="mx-auto mt-2 h-[60mm]"><path d={it.path} fill="none" stroke="#9CA3AF" strokeWidth="1.6" strokeDasharray="3 2.5" strokeLinecap="round" /></svg>
             : <>
-              <div className="trace-letter mt-2 text-[22mm] leading-none">{Array.from({ length: it.guide.length > 3 ? 2 : 4 }, () => fillName(it.guide, name || 'prénom')).join('  ')}</div>
+              <div className="trace-letter mt-2 text-[22mm] leading-none">{(() => { const g = fillName(it.guide, name || 'prénom'); return Array.from({ length: g.length > 8 ? 1 : g.length > 3 ? 2 : 4 }, () => g).join('  '); })()}</div>
               <div className="mt-3 h-[18mm] border-b-2 border-t border-dashed border-slate-400" />
             </>}
         </Box>
