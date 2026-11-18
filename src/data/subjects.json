@@ -1,0 +1,6 @@
+[
+  { "id": "francais", "label": { "fr": "Français", "wo": "Faranse" }, "icon": "🗣️", "color": "ciel" },
+  { "id": "maths", "label": { "fr": "Mathématiques", "wo": "Waññ" }, "icon": "🔢", "color": "terre" },
+  { "id": "lecture", "label": { "fr": "Lecture et écriture", "wo": "Jàng ak bind" }, "icon": "✏️", "color": "vert" },
+  { "id": "decouverte", "label": { "fr": "Découverte et jeux", "wo": "Xam-xam ak po" }, "icon": "🧩", "color": "violet" }
+]

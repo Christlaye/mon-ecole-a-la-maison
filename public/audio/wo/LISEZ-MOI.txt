@@ -1,0 +1,4 @@
+Déposez ici les consignes audio en wolof (format .mp3 ou .m4a, mono, 32-64 kb/s pour rester léger).
+Nom conseillé : <id de l'activité>.mp3 (ex. fr-01.mp3, ma-01.mp3, _welcome.mp3).
+Puis renseignez le chemin dans src/data/audio-manifest.json, par ex. "fr-01": "audio/wo/fr-01.mp3".
+Les mêmes emplacements peuvent servir pour d'autres langues (audio/ff/, audio/srr/...).
