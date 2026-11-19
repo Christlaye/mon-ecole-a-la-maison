@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { guideImage } from '../engines/Trace.jsx';
 import { useStore, currentProfile } from '../lib/store.js';
 import { allActivities, getActivity, subjectById, drawings, fillName } from '../lib/content.js';
 import Visual from '../components/Visual.jsx';
@@ -97,9 +98,9 @@ function Body({ a, name }) {
         <Box key={k}>
           <p className="font-bold">{k + 1}. {it.say || 'Repasse sur les pointillés.'}</p>
           {it.path
-            ? <svg viewBox="0 0 100 100" className="mx-auto mt-2 h-[60mm]"><path d={it.path} fill="none" stroke="#9CA3AF" strokeWidth="1.6" strokeDasharray="3 2.5" strokeLinecap="round" /></svg>
+            ? <svg viewBox="0 0 100 100" className="mx-auto mt-2 h-[60mm]"><path d={it.path} fill="none" stroke="#334155" strokeWidth="2.4" strokeDasharray="3.5 3" strokeLinecap="round" /></svg>
             : <>
-              <div className="trace-letter mt-2 text-[22mm] leading-none">{(() => { const g = fillName(it.guide, name || 'prénom'); return Array.from({ length: g.length > 8 ? 1 : g.length > 3 ? 2 : 4 }, () => g).join('  '); })()}</div>
+              <TraceText text={fillName(it.guide, name || 'prénom')} />
               <div className="mt-3 h-[18mm] border-b-2 border-t border-dashed border-slate-400" />
             </>}
         </Box>
@@ -122,4 +123,19 @@ function ChoiceList({ items }) {
       <div className="mt-2 flex flex-wrap justify-around gap-3">{it.options.map((o, j) => <span key={j} className={circle}><Visual v={o} size={44} /></span>)}</div>
     </Box>
   ));
+}
+
+/** Mots en gros points pour la fiche imprimée : un mot par ligne (prénom composé),
+ *  ou le mot répété s'il est court. */
+function TraceText({ text }) {
+  const [rows, setRows] = useState([]);
+  useEffect(() => {
+    let alive = true;
+    const words = text.split(' ').filter(Boolean);
+    const lines = words.length > 1 ? words : [Array.from({ length: text.length > 5 ? 1 : text.length > 2 ? 2 : 4 }, () => text).join('   ')];
+    const go = () => alive && setRows(lines.map((l) => guideImage(l)));
+    (document.fonts?.load('bold 60px Andika', text) || Promise.resolve()).then(go, go);
+    return () => { alive = false; };
+  }, [text]);
+  return <div className="mt-2 space-y-1">{rows.map((src, k) => <img key={k} src={src} alt="" className="block w-full" />)}</div>;
 }
