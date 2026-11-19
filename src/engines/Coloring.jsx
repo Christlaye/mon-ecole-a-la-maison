@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Btn, Dots, Feedback, praise } from '../components/ui.jsx';
-import { speak, stop, chime } from '../lib/audio.js';
+import { speak, stop, chime, sayPhrase } from '../lib/audio.js';
 import { drawings } from '../lib/content.js';
 
 const PALETTE = ['#DC2626', '#F97316', '#FACC15', '#16A34A', '#1D63C4', '#7C3AED', '#92400E', '#111827', '#F9A8D4', '#FFFFFF'];
@@ -21,7 +21,7 @@ export default function Coloring({ items, onFinish }) {
   }, [i]);
 
   const done = () => {
-    const p = praise(); chime('win'); setFb({ kind: 'ok', text: p.fr, wo: p.wo }); speak(p.fr);
+    const p = praise(); chime('win'); setFb({ kind: 'ok', text: p.fr, wo: p.wo }); sayPhrase(p);
     setTimeout(() => { stop(); if (i + 1 < items.length) setI(i + 1); else onFinish({ errors: 0, revealed: 0, total: items.length, perItem: [] }); }, 1400);
   };
 

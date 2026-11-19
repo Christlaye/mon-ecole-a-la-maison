@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useStore, currentProfile } from '../lib/store.js';
 import { getActivity, allActivities, phrases } from '../lib/content.js';
-import { speak, chime } from '../lib/audio.js';
+import { speak, chime, findClip, playUrl } from '../lib/audio.js';
 import { Btn, Confetti } from '../components/ui.jsx';
 import { go } from '../router.js';
 
@@ -13,7 +13,15 @@ export default function Bravo({ id }) {
   const list = allActivities(s);
   const next = list[list.findIndex((x) => x.id === id) + 1];
 
-  useEffect(() => { chime('win'); const t = setTimeout(() => speak(`Bravo ${p?.name || ''} ! Tu as gagné trois étoiles !`), 400); return () => clearTimeout(t); }, []);
+  useEffect(() => {
+    chime('win');
+    const t = setTimeout(async () => {
+      const lang = s.settings.audioLang;
+      const url = lang !== 'fr' ? await findClip(lang, '_bravo') : null;
+      if (!url || !(await playUrl(url))) speak(`Bravo ${p?.name || ''} ! Tu as gagné trois étoiles !`);
+    }, 400);
+    return () => clearTimeout(t);
+  }, []);
   if (!a) return null;
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col items-center gap-4 px-4 py-8 text-center">

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { chime } from '../lib/audio.js';
 import { praise, encourage } from '../components/ui.jsx';
 import { phrases } from '../lib/content.js';
-import { speak } from '../lib/audio.js';
+import { sayPhrase } from '../lib/audio.js';
 
 export const MAX_TRIES = 3;
 
@@ -16,7 +16,7 @@ export function useTries() {
     const p = praise();
     chime('ok');
     setFb({ kind: 'ok', text: p.fr, wo: p.wo });
-    if (say) speak(p.fr, { rate: 1 });
+    if (say) sayPhrase(p, { rate: 1 });
     stats.current.perItem.push(tries.current);
     tries.current = 0;
   };
@@ -29,13 +29,13 @@ export function useTries() {
       stats.current.revealed += 1;
       stats.current.perItem.push(tries.current);
       setFb({ kind: 'show', text: explain || phrases.reveal.fr, wo: phrases.reveal.wo });
-      speak(explain || phrases.reveal.fr);
+      sayPhrase(explain ? { id: '_reveal', fr: explain } : { id: '_reveal', ...phrases.reveal });
       tries.current = 0;
       return true;
     }
     const e = encourage();
     setFb({ kind: 'try', text: e.fr, wo: e.wo, hint: tries.current >= 1 ? hint : null });
-    speak(e.fr + (hint ? ' ' + hint : ''));
+    sayPhrase(e, { extraFr: hint || '' });
     return false;
   };
   const clear = () => setFb(null);

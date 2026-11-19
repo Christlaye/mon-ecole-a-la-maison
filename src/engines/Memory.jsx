@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Visual from '../components/Visual.jsx';
 import { Dots, Feedback } from '../components/ui.jsx';
-import { speak, stop, chime } from '../lib/audio.js';
+import { speak, stop, chime, sayPhrase } from '../lib/audio.js';
 import { shuffle } from '../lib/content.js';
 import { praise } from '../components/ui.jsx';
 
@@ -31,7 +31,7 @@ export default function Memory({ items, onFinish }) {
         setFound(nf); setOpen([]); chime('ok');
         const p = praise(); setFb({ kind: 'ok', text: p.fr, wo: p.wo });
         if (nf.length === item.pairs.length) {
-          chime('win'); speak(p.fr);
+          chime('win'); sayPhrase(p);
           setTimeout(() => {
             stop();
             if (i + 1 < items.length) setI(i + 1);

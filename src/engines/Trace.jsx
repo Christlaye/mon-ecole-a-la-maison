@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Btn, Dots, Feedback, praise, encourage } from '../components/ui.jsx';
-import { speak, stop, chime } from '../lib/audio.js';
+import { speak, stop, chime, sayPhrase } from '../lib/audio.js';
 import { fillName } from '../lib/content.js';
 import { useStore, currentProfile } from '../lib/store.js';
 
@@ -227,13 +227,13 @@ export default function Trace({ items: raw, onFinish }) {
     if (inked < 20) { setFb({ kind: 'try', text: 'Trace avec ton doigt sur l’écran.' }); speak('Trace avec ton doigt sur l’écran.'); return; }
     const needed = mode === 'copy' ? 0 : 0.35;
     if (cov >= needed || tries >= 2) {
-      const p = praise(); chime('ok'); setFb({ kind: 'ok', text: p.fr, wo: p.wo }); speak(p.fr);
+      const p = praise(); chime('ok'); setFb({ kind: 'ok', text: p.fr, wo: p.wo }); sayPhrase(p);
       setTimeout(next, 1400);
     } else {
       setTries(tries + 1);
       const e = encourage();
       setFb({ kind: 'try', text: e.fr, wo: e.wo, hint: 'Suis bien les pointillés, du début à la fin.' });
-      speak('Continue de suivre les pointillés.');
+      sayPhrase(e, { extraFr: 'Continue de suivre les pointillés.' });
     }
   };
 

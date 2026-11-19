@@ -89,6 +89,30 @@ export async function playPhrase(id, phrase, lang = getState().settings.audioLan
   return (await speak(phrase.fr)) ? 'tts' : 'text';
 }
 
+/**
+ * Dit une petite phrase (bravo, encouragement…) : la voix wolof enregistrée si
+ * la langue choisie est le wolof et qu'elle existe, sinon la voix française.
+ */
+export async function sayPhrase(phrase, { extraFr = '', rate } = {}) {
+  const lang = getState().settings.audioLang;
+  if (lang !== 'fr' && phrase.id) {
+    const url = await findClip(lang, phrase.id);
+    if (url && (await playUrl(url))) return 'audio';
+  }
+  return (await speak(phrase.fr + (extraFr ? ' ' + extraFr : ''), { rate })) ? 'tts' : 'text';
+}
+
+/** Liste de toutes les phrases à enregistrer dans une langue (studio). */
+export function phraseSlots(phrases) {
+  return [
+    { id: '_welcome', label: 'Accueil', p: phrases.welcome },
+    { id: '_bravo', label: 'Fin d’activité', p: phrases.bravoText },
+    ...phrases.praise.map((p, k) => ({ id: `_praise-${k}`, label: `Bravo n°${k + 1}`, p })),
+    ...phrases.encourage.map((p, k) => ({ id: `_encourage-${k}`, label: `Encouragement n°${k + 1}`, p })),
+    { id: '_reveal', label: 'Réponse montrée', p: phrases.reveal }
+  ];
+}
+
 const NUMS = ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf', 'vingt'];
 export const sayNumber = (n) => speak(NUMS[n] ?? String(n), { rate: 1 });
 
