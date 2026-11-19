@@ -84,9 +84,9 @@ export function Feedback({ fb }) {
 }
 
 let pIdx = 0;
-export const praise = () => phrases.praise[pIdx++ % phrases.praise.length];
+export const praise = () => { const k = pIdx++ % phrases.praise.length; return { ...phrases.praise[k], id: `_praise-${k}` }; };
 let eIdx = 0;
-export const encourage = () => phrases.encourage[eIdx++ % phrases.encourage.length];
+export const encourage = () => { const k = eIdx++ % phrases.encourage.length; return { ...phrases.encourage[k], id: `_encourage-${k}` }; };
 
 export function Confetti() {
   const [items] = useState(() => Array.from({ length: 18 }, (_, i) => ({ left: Math.random() * 100, delay: Math.random() * 0.6, e: ['⭐', '🌟', '✨', '🎉'][i % 4] })));

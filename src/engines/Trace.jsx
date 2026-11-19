@@ -1,20 +1,127 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Btn, Dots, Feedback, praise, encourage } from '../components/ui.jsx';
-import { speak, stop, chime } from '../lib/audio.js';
+import { speak, stop, chime, sayPhrase } from '../lib/audio.js';
 import { fillName } from '../lib/content.js';
 import { useStore, currentProfile } from '../lib/store.js';
 
 const FONT = (px) => `bold ${px}px Andika, "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif`;
+const DASH = '#334155';     // pointillés bien visibles
+const FILL = '#FEF3C7';     // intérieur des lettres (jaune pâle)
+
+/** Un prénom composé (« Marie Angélique ») devient une étape par mot : lettres plus grandes. */
+function expand(items, name) {
+  return items.flatMap((it) => {
+    const g = it.guide ? fillName(it.guide, name) : null;
+    const words = g && (it.mode || 'trace') === 'trace' ? g.split(' ').filter(Boolean) : [];
+    if (words.length < 2) return [{ ...it, guide: g }];
+    return words.map((w, k) => ({ ...it, guide: w, say: k === 0 ? it.say : `Et maintenant : ${w}.` }));
+  });
+}
+
+/** Squelette d'un texte (amincissement Zhang-Suen) puis points régulièrement espacés :
+ *  donne de vraies lettres en pointillés sur une seule ligne, comme dans un cahier. */
+function dotsForText(text, font, w, h, x, y, gap) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const g = c.getContext('2d');
+  g.font = font; g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.fillStyle = '#000';
+  g.fillText(text, x, y);
+  const d = g.getImageData(0, 0, w, h).data;
+  const im = new Uint8Array(w * h);
+  for (let k = 0; k < w * h; k++) im[k] = d[k * 4 + 3] > 127 ? 1 : 0;
+  const at = (i, j) => im[j * w + i];
+  let changed = true;
+  const del = [];
+  while (changed) {
+    changed = false;
+    for (let pass = 0; pass < 2; pass++) {
+      del.length = 0;
+      for (let j = 1; j < h - 1; j++) for (let i = 1; i < w - 1; i++) {
+        if (!at(i, j)) continue;
+        const P = [at(i, j - 1), at(i + 1, j - 1), at(i + 1, j), at(i + 1, j + 1), at(i, j + 1), at(i - 1, j + 1), at(i - 1, j), at(i - 1, j - 1)];
+        const B = P.reduce((a, b) => a + b, 0);
+        if (B < 2 || B > 6) continue;
+        let A = 0; for (let k = 0; k < 8; k++) if (!P[k] && P[(k + 1) % 8]) A++;
+        if (A !== 1) continue;
+        if (pass === 0 ? (P[0] * P[2] * P[4] || P[2] * P[4] * P[6]) : (P[0] * P[2] * P[6] || P[0] * P[4] * P[6])) continue;
+        del.push(j * w + i);
+      }
+      if (del.length) { changed = true; del.forEach((k) => { im[k] = 0; }); }
+    }
+  }
+  // suivre chaque trait pour poser les points à intervalle régulier
+  const pts = [];
+  const seen = new Uint8Array(w * h);
+  const far = (px, py) => pts.every(([a, b]) => (a - px) ** 2 + (b - py) ** 2 >= gap * gap * 0.7);
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    if (!im[j * w + i] || seen[j * w + i]) continue;
+    const stack = [[i, j, gap]];
+    while (stack.length) {
+      const [ci, cj, acc] = stack.pop();
+      if (seen[cj * w + ci]) continue;
+      seen[cj * w + ci] = 1;
+      let a = acc;
+      if (a >= gap && far(ci, cj)) { pts.push([ci, cj]); a = 0; }
+      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+        const ni = ci + di, nj = cj + dj;
+        if ((di || dj) && ni >= 0 && nj >= 0 && ni < w && nj < h && im[nj * w + ni] && !seen[nj * w + ni]) stack.push([ni, nj, a + Math.hypot(di, dj)]);
+      }
+    }
+  }
+  return pts;
+}
+
+/** Un mot long (« ANGÉLIQUE ») est coupé en deux lignes pour garder de grandes lettres. */
+const splitWord = (t) => { if (t.length <= 6) return [t]; const k = Math.ceil(t.length / 2) - (t.length % 2 ? 1 : 0); return [t.slice(0, k) + '-', t.slice(k)]; };
+
+/** Dessine un mot en gros points sur lignes de cahier (écran et fiche imprimée). */
+export function drawTextGuide(ctx, text, w, h, forMask, rows = [text], maxR = 8) {
+  const rowH = h / rows.length;
+  let px = rowH * (text.length === 1 ? 0.8 : rows.length > 1 ? 0.62 : 0.7);
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.font = FONT(px);
+  while (Math.max(...rows.map((t) => ctx.measureText(t).width)) > w * 0.94 && px > 28) { px -= 2; ctx.font = FONT(px); }
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  const line = Math.max(2, px / 60);
+  rows.forEach((t, k) => {
+    const y = rowH * k + rowH * 0.5 + px * 0.3;
+    if (forMask) { ctx.fillStyle = '#000'; ctx.fillText(t, w / 2, y); ctx.lineWidth = Math.max(16, px * 0.2); ctx.strokeStyle = '#000'; ctx.strokeText(t, w / 2, y); return; }
+    // lignes de cahier : ligne d'écriture + hauteur des petites lettres
+    ctx.strokeStyle = '#BFDBFE'; ctx.lineWidth = line;
+    [y, y - px * 0.5, y - px * 0.72].forEach((ly, n) => { ctx.setLineDash(n ? [line * 3, line * 3] : []); ctx.beginPath(); ctx.moveTo(8, ly); ctx.lineTo(w - 8, ly); ctx.stroke(); });
+    ctx.setLineDash([]);
+    // lettre en fond jaune pâle, puis gros points sur le milieu du trait
+    ctx.lineWidth = Math.max(10, px * 0.14); ctx.strokeStyle = FILL; ctx.strokeText(t, w / 2, y);
+    ctx.fillStyle = FILL; ctx.fillText(t, w / 2, y);
+    const r = Math.max(4, Math.min(maxR, px * 0.05));
+    const pts = dotsForText(t, ctx.font, Math.round(w), Math.round(h), w / 2, y, r * 3.4);
+    ctx.fillStyle = DASH;
+    pts.forEach(([u, v]) => { ctx.beginPath(); ctx.arc(u + 0.5, v + 0.5, r, 0, Math.PI * 2); ctx.fill(); });
+  });
+  ctx.restore();
+}
+
+/** Image (data URL) d'un mot en pointillés, pour les fiches à imprimer. */
+export function guideImage(text, w = 1800, h = 300) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);
+  drawTextGuide(ctx, text, w, h, false, [text], 14);
+  return c.toDataURL('image/png');
+}
+
+/** Premier point d'un chemin SVG (pour la pastille verte de départ). */
+const startOf = (d) => { const m = d.match(/M\s*(-?[\d.]+)[\s,]+(-?[\d.]+)/); return m ? [+m[1], +m[2]] : null; };
 
 /** Tracer avec le doigt : lettres, prénom, dessins guidés (mode trace) ou copie libre (mode copy). */
-export default function Trace({ items, onFinish }) {
+export default function Trace({ items: raw, onFinish }) {
   const name = useStore((s) => currentProfile(s)?.name || 'Awa');
+  const items = useMemo(() => expand(raw, name), [raw, name]);
   const [i, setI] = useState(0);
   const [fb, setFb] = useState(null);
   const [tries, setTries] = useState(0);
   const item = items[i];
   const mode = item.mode || 'trace';
-  const guide = item.guide ? fillName(item.guide, name) : null;
+  const guide = item.guide || null;
 
   const wrap = useRef(null);
   const canvas = useRef(null);
@@ -26,10 +133,12 @@ export default function Trace({ items, onFinish }) {
 
   useLayoutEffect(() => {
     const w = Math.min(wrap.current.clientWidth, 520);
-    const lines = guide ? guide.split(' ').filter(Boolean).length : 1;
-    const h = item.path ? Math.min(w, 380) : Math.round(w * (lines > 1 && mode === 'trace' ? 0.5 * Math.min(lines, 3) : 0.62));
+    const h = item.path ? Math.min(w, 420) : Math.round(w * (mode !== 'trace' ? 0.62 : guide && splitWord(guide).length > 1 ? 0.95 : 0.66));
     setSize({ w, h });
   }, [i, guide]);
+  // la police d'écolier doit être chargée avant de dessiner les pointillés
+  const [fontOk, setFontOk] = useState(0);
+  useEffect(() => { document.fonts?.load(FONT(60), guide || 'a').then(() => setFontOk((n) => n + 1)).catch(() => {}); }, [guide]);
 
   useEffect(() => {
     setFb(null); setTries(0);
@@ -39,36 +148,21 @@ export default function Trace({ items, onFinish }) {
 
   const drawGuide = (ctx, w, h, forMask) => {
     ctx.save();
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     if (item.path) {
       const s = Math.min(w, h) / 100;
       ctx.translate((w - 100 * s) / 2, (h - 100 * s) / 2);
       ctx.scale(s, s);
       const p = new Path2D(item.path);
-      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      if (forMask) { ctx.lineWidth = 16 / s * 1.0; ctx.strokeStyle = '#000'; ctx.stroke(p); }
+      if (forMask) { ctx.lineWidth = 26 / s; ctx.strokeStyle = '#000'; ctx.stroke(p); }
       else {
-        ctx.lineWidth = 12 / s; ctx.strokeStyle = '#E2E8F0'; ctx.stroke(p);
-        ctx.setLineDash([3, 3]); ctx.lineWidth = 2.2 / s * 1.4; ctx.strokeStyle = '#64748B'; ctx.stroke(p);
+        ctx.lineWidth = 24 / s; ctx.strokeStyle = FILL; ctx.stroke(p);
+        ctx.setLineDash([0.01, 13 / s]); ctx.lineWidth = 9 / s; ctx.strokeStyle = DASH; ctx.stroke(p);
+        const st = startOf(item.path);
+        if (st) { ctx.setLineDash([]); ctx.fillStyle = '#16A34A'; ctx.beginPath(); ctx.arc(st[0], st[1], 11 / s, 0, Math.PI * 2); ctx.fill(); }
       }
     } else if (guide && mode === 'trace') {
-      // un prénom composé (« Marie Angélique ») est tracé sur plusieurs lignes
-      const words = guide.split(' ').filter(Boolean);
-      const rowH = h / words.length;
-      let px = rowH * 0.78;
-      ctx.font = FONT(px);
-      const widest = () => Math.max(...words.map((t) => ctx.measureText(t).width));
-      while (widest() > w * 0.92 && px > 24) { px -= 4; ctx.font = FONT(px); }
-      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-      words.forEach((t, r) => {
-        const y = rowH * r + rowH * 0.5 + px * 0.33;
-        if (forMask) { ctx.fillStyle = '#000'; ctx.fillText(t, w / 2, y); ctx.lineWidth = 10; ctx.strokeStyle = '#000'; ctx.strokeText(t, w / 2, y); }
-        else {
-          ctx.save();
-          ctx.fillStyle = '#EEF2F7'; ctx.fillText(t, w / 2, y);
-          ctx.setLineDash([6, 6]); ctx.lineWidth = 3; ctx.strokeStyle = '#64748B'; ctx.strokeText(t, w / 2, y);
-          ctx.restore();
-        }
-      });
+      drawTextGuide(ctx, guide, w, h, forMask, splitWord(guide));
     }
     ctx.restore();
   };
@@ -92,7 +186,7 @@ export default function Trace({ items, onFinish }) {
     const k = document.createElement('canvas'); k.width = size.w; k.height = size.h;
     ink.current = k;
   };
-  useEffect(paintBase, [size, i, guide]);
+  useEffect(paintBase, [size, i, guide, fontOk]);
 
   const pos = (e) => {
     const r = canvas.current.getBoundingClientRect();
@@ -133,13 +227,13 @@ export default function Trace({ items, onFinish }) {
     if (inked < 20) { setFb({ kind: 'try', text: 'Trace avec ton doigt sur l’écran.' }); speak('Trace avec ton doigt sur l’écran.'); return; }
     const needed = mode === 'copy' ? 0 : 0.35;
     if (cov >= needed || tries >= 2) {
-      const p = praise(); chime('ok'); setFb({ kind: 'ok', text: p.fr, wo: p.wo }); speak(p.fr);
+      const p = praise(); chime('ok'); setFb({ kind: 'ok', text: p.fr, wo: p.wo }); sayPhrase(p);
       setTimeout(next, 1400);
     } else {
       setTries(tries + 1);
       const e = encourage();
-      setFb({ kind: 'try', text: e.fr, wo: e.wo, hint: 'Suis bien les pointillés gris, du début à la fin.' });
-      speak('Continue de suivre les pointillés.');
+      setFb({ kind: 'try', text: e.fr, wo: e.wo, hint: 'Suis bien les pointillés, du début à la fin.' });
+      sayPhrase(e, { extraFr: 'Continue de suivre les pointillés.' });
     }
   };
 

@@ -221,7 +221,7 @@
       { "guide": "{prenom}", "say": "Maintenant, trace ton prénom en petites lettres." },
       { "guide": "{prenom}", "say": "Encore une fois, doucement.", "mode": "copy" }
     ],
-    "offscreen": { "fr": "Écrivez le prénom de l'enfant sur une feuille. Il le recopie dessous, puis le décore. Mettez-le sur sa porte ou son cahier.", "wo": "Bindal turu xale bi, mu bind ko ci suuf." }
+    "offscreen": { "fr": "Écrivez le prénom de l'enfant sur une feuille. L'enfant le recopie dessous, puis le décore. Mettez-le sur sa porte ou son cahier.", "wo": "Bindal turu xale bi, mu bind ko ci suuf." }
   },
   {
     "id": "fr-06", "week": 6, "subject": "francais", "icon": "✋🏾", "notion": "Vocabulaire : le corps",
@@ -342,7 +342,7 @@
       { "say": "Touche le mot : et.", "label": "et", "options": ["big:le", "big:et", "big:un"], "answer": 1, "hint": "Il a deux lettres : e et t.", "explain": "et : e, t." },
       { "say": "Touche le mot : un.", "label": "un", "options": ["big:un", "big:il", "big:la"], "answer": 0, "hint": "Il commence par u.", "explain": "un : u, n." },
       { "say": "Touche le mot : la.", "label": "la", "options": ["big:le", "big:il", "big:la"], "answer": 2, "hint": "l et a : la.", "explain": "la : l, a." },
-      { "say": "Touche le mot : est.", "label": "est", "options": ["big:et", "big:est", "big:les"], "answer": 1, "hint": "Il a trois lettres : e, s, t.", "explain": "est : e, s, t. Comme dans « Awa est contente »." },
+      { "say": "Touche le mot : est.", "label": "est", "options": ["big:et", "big:est", "big:les"], "answer": 1, "hint": "Il a trois lettres : e, s, t.", "explain": "est : e, s, t. Comme dans « {nom} est contente »." },
       { "say": "Touche le mot : il.", "label": "il", "options": ["big:il", "big:le", "big:un"], "answer": 0, "hint": "Il commence par i.", "explain": "il : i, l." }
     ],
     "offscreen": { "fr": "Écrivez les petits mots (le, la, un, et, est, il) sur des cartes. Cherchez-les ensemble dans un livre ou un journal.", "wo": "Bindal baat yi ci kart yi, wutleen leen ci benn téére." }

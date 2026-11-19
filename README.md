@@ -57,10 +57,11 @@ Visuels sans image à télécharger (léger) : emojis et petits codes — `🥭x
 ## Audio
 
 - **Français** : synthèse vocale du téléphone (aucun fichier, aucune donnée consommée).
-- **Wolof** : emplacements prêts à remplir.
-  - soit le parent enregistre les consignes dans l'application (Espace parent → Voix), stockées sur le téléphone ;
-  - soit on ajoute des fichiers dans `public/audio/wo/<id>.mp3` et on renseigne `src/data/audio-manifest.json`.
-  - tant qu'aucun audio n'existe, le texte wolof s'affiche pour que le parent le lise.
+- **Wolof** : voix humaine enregistrée (pas de voix wolof de synthèse dans les navigateurs).
+  - **Studio** (Espace parent → Voix → « Ouvrir le studio ») : chaque phrase s'affiche en grand, on enregistre, on réécoute, on passe à la suivante. 47 phrases : accueil, bravo, encouragements, réponse montrée, et la consigne de chaque activité.
+  - Les voix restent sur le téléphone. « Partager mes voix » crée un fichier `voix-wo-<date>.json` à importer sur un autre téléphone (« Importer des voix »).
+  - Pour les mettre dans le site (tous les appareils, hors ligne compris) : `node scripts/importer-voix.mjs voix-wo-<date>.json`, puis publier. Les fichiers vont dans `public/audio/wo/` et sont déclarés dans `src/data/audio-manifest.json`.
+  - Priorité : voix enregistrée sur le téléphone → fichier du site → texte wolof affiché (le parent le lit). Les bravos et encouragements sans voix wolof restent dits en français.
 - **Autres langues nationales** (pulaar, sereer, joola, mandinka…) : déjà listées dans `languages.json` (`"enabled": false`). Les activer et ajouter les textes `"ff"`, `"srr"`… à côté de `"wo"`.
 
 ⚠️ Les textes wolof sont une première proposition : à faire relire par un locuteur ou un enseignant.
