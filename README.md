@@ -54,6 +54,13 @@ Le texte `{nom}` est remplacé par le prénom de l'enfant (il devient le héros 
 
 Visuels sans image à télécharger (léger) : emojis et petits codes — `🥭x3` (3 mangues), `coin:100` / `bill:1000` (francs CFA), `shape:circle:#DC2626`, `color:#16A34A`, `big:ma` (grosses lettres), `scene:sous:⚽:🪑` (position), `t:Une phrase.` (texte).
 
+## Révision du jour
+
+- Accueil → **📝 Révision du jour** : les leçons de la date la plus récente (jusqu'à aujourd'hui), puis les révisions précédentes.
+- Pour chaque leçon : photo(s) du tableau (agrandissables), lettres à écouter, phrases à écouter (🔊) et mots à toucher un par un, petit jeu (« Touche le mot », « Touche la lettre » + questions à images éventuelles), idée hors écran.
+- **Espace parent → 📝 Révisions** : ajouter / modifier / supprimer (date, matière, titre, photos, texte une ligne par phrase, lettres, idée hors écran). `{nom}` = prénom de l'enfant.
+- Tout reste sur le téléphone : texte dans localStorage, photos réduites dans IndexedDB. Les exemples fournis (`src/data/revisions.json`) reprennent le texte des leçons de novembre, sans photo de la classe.
+
 ## Audio
 
 - **Français** : synthèse vocale du téléphone (aucun fichier, aucune donnée consommée).

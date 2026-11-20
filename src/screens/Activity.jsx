@@ -28,12 +28,12 @@ export default function Activity({ id }) {
 
   return (
     <main className="mx-auto min-h-screen max-w-xl pb-8">
-      <TopBar title={`${a.icon} ${a.title.fr}`} back={`#/matiere/${a.subject}`} right={<LangToggle />} />
+      <TopBar title={`${a.icon} ${a.title.fr}`} back={a.back || `#/matiere/${a.subject}`} right={<LangToggle />} />
       {phase === 'intro' ? (
         <div className="flex flex-col items-center gap-5 px-4 pt-4 text-center">
           <span className="grid h-32 w-32 place-items-center rounded-[2rem] bg-white text-7xl shadow">{a.icon}</span>
           <div>
-            <p className="text-sm font-black uppercase tracking-wide text-slate-500">{sub?.label.fr} • Semaine {a.week}</p>
+            <p className="text-sm font-black uppercase tracking-wide text-slate-500">{a.revision ? '📝 Révision' : `${sub?.label.fr} • Semaine ${a.week}`}</p>
             <h2 className="text-3xl font-black">{a.title.fr}</h2>
             {lang !== 'fr' && a.title[lang] && <p className="text-lg font-semibold text-slate-600">{a.title[lang]}</p>}
           </div>
@@ -46,7 +46,7 @@ export default function Activity({ id }) {
             </span>
           </button>
           <Btn onClick={() => { stop(); setPhase('play'); }} color="vert" className="w-full max-w-xs text-2xl">C’est parti ! ▶️</Btn>
-          <a href={`#/fiche/activite/${a.id}`} className="text-sm font-bold text-ciel underline">🖨️ Fiche à imprimer</a>
+          {!a.revision && <a href={`#/fiche/activite/${a.id}`} className="text-sm font-bold text-ciel underline">🖨️ Fiche à imprimer</a>}
         </div>
       ) : (
         Engine ? <Engine activity={a} items={a.items} onFinish={finish} /> : <p className="p-6">Type d’activité inconnu : {a.type}</p>

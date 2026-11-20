@@ -3,6 +3,7 @@ import subjects from '../data/subjects.json';
 import phrases from '../data/phrases.json';
 import drawings from '../data/drawings.json';
 import { getState, profileProgress, currentProfile } from './store.js';
+import { revisionActivityById } from './revisions.js';
 
 export { subjects, phrases, drawings };
 
@@ -28,7 +29,7 @@ const order = (a) => subjOrder[a.subject] ?? 9;
 
 export const isBuiltIn = (id) => builtIn.some((a) => a.id === id);
 export const builtInById = (id) => builtIn.find((a) => a.id === id);
-export const getActivity = (id, s, opts) => allActivities(s, opts).find((a) => a.id === id);
+export const getActivity = (id, s, opts) => allActivities(s, opts).find((a) => a.id === id) || revisionActivityById(id, s);
 export const subjectById = (id) => subjects.find((x) => x.id === id);
 
 /** Activité du jour : la première non terminée dans l'ordre des semaines. */
