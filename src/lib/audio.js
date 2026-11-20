@@ -31,7 +31,7 @@ export function speak(text, { rate } = {}) {
   if (!text || !canSpeak()) return Promise.resolve(false);
   stop();
   return new Promise((resolve) => {
-    const u = new SpeechSynthesisUtterance(text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, ''));
+    const u = new SpeechSynthesisUtterance(text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F1E6}-\u{1F1FF}\u{2B00}-\u{2BFF}\uFE0F\u200D]/gu, ''));
     u.lang = 'fr-FR';
     if (frVoice) u.voice = frVoice;
     u.rate = rate ?? getState().settings.rate ?? 0.9;

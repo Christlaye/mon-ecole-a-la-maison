@@ -1,0 +1,161 @@
+[
+  {
+    "id": "r-2026-11-06-lecture",
+    "date": "2026-11-06",
+    "subject": "lecture",
+    "title": "Lecture : bonjour, bonsoir",
+    "lines": ["bonjour maman.", "bonsoir papa.", "comment allez-vous les amis ?", "voici mon école.", "voilà la cour.", "mon école est près de la route."]
+  },
+  {
+    "id": "r-2026-11-09-klmno",
+    "date": "2026-11-09",
+    "subject": "lecture",
+    "title": "L'alphabet : K L M N O",
+    "letters": "K L M N O",
+    "lines": ["K k : judoka, kilo, karaté", "L l : poule, lune, lame", "M m : moto, tomate, mimi", "N n : note, lune, ananas", "O o : école, vélo, robe"],
+    "items": [
+      { "say": "Touche la moto.", "options": ["🏍️", "🍅", "🌙"], "answer": 0 },
+      { "say": "Touche la tomate.", "options": ["🐔", "🍅", "🍍"], "answer": 1 },
+      { "say": "Touche la lune.", "options": ["🚲", "👗", "🌙"], "answer": 2 },
+      { "say": "Touche l'ananas.", "options": ["🍍", "🏍️", "🐔"], "answer": 0 }
+    ]
+  },
+  {
+    "id": "r-2026-11-10-alphabet",
+    "date": "2026-11-10",
+    "subject": "lecture",
+    "title": "Lecture : voici mon école",
+    "lines": ["merci papa.", "voici mon école.", "voilà la cour.", "c'est ma classe."]
+  },
+  {
+    "id": "r-2026-11-12-oral",
+    "date": "2026-11-12",
+    "subject": "oral",
+    "title": "Communication orale : se présenter",
+    "lines": ["mon prénom est : {nom}.", "je m'appelle {nom}.", "et toi, comment tu t'appelles ?"],
+    "tip": "Jouez à vous présenter : « Mon prénom est… Mon nom est… ». Elle peut aussi dire son nom de famille."
+  },
+  {
+    "id": "r-2026-11-12-geometrie",
+    "date": "2026-11-12",
+    "subject": "geometrie",
+    "title": "En haut, en bas",
+    "lines": ["🇸🇳 le drapeau est en haut.", "🌼 la fleur est en bas."],
+    "items": [
+      { "say": "Qu'est-ce qui est en haut du mât ?", "options": ["🇸🇳", "🌼"], "answer": 0 },
+      { "say": "Qu'est-ce qui est en bas, dans le pot ?", "options": ["🇸🇳", "🌼"], "answer": 1 },
+      { "say": "Le soleil est dans le ciel. Il est en haut ou en bas ?", "options": ["t:⬆️ en haut", "t:⬇️ en bas"], "answer": 0, "shuffle": false },
+      { "say": "Tes pieds sont en haut ou en bas ?", "options": ["t:⬆️ en haut", "t:⬇️ en bas"], "answer": 1, "shuffle": false }
+    ],
+    "tip": "Dans la maison, demandez : « Qu'est-ce qui est en haut ? en bas ? » (l'armoire, le tapis, la lampe…)."
+  },
+  {
+    "id": "r-2026-11-13-jour-nuit",
+    "date": "2026-11-13",
+    "subject": "histoire",
+    "title": "Le jour et la nuit",
+    "lines": ["☀️ le jour : aller au travail, aller à l'école, aller au marché, déjeuner.", "🌙 la nuit : faire ses exercices, regarder la télé, jouer, aller dormir."],
+    "items": [
+      { "say": "Aller à l'école, c'est le jour ou la nuit ?", "prompt": "🎒", "options": ["t:☀️ le jour", "t:🌙 la nuit"], "answer": 0, "shuffle": false },
+      { "say": "Aller dormir, c'est le jour ou la nuit ?", "prompt": "🛏️", "options": ["t:☀️ le jour", "t:🌙 la nuit"], "answer": 1, "shuffle": false },
+      { "say": "Aller au marché, c'est le jour ou la nuit ?", "prompt": "🧺", "options": ["t:☀️ le jour", "t:🌙 la nuit"], "answer": 0, "shuffle": false },
+      { "say": "Regarder les étoiles, c'est le jour ou la nuit ?", "prompt": "⭐", "options": ["t:☀️ le jour", "t:🌙 la nuit"], "answer": 1, "shuffle": false }
+    ]
+  },
+  {
+    "id": "r-2026-11-13-ensembles",
+    "date": "2026-11-13",
+    "subject": "maths",
+    "title": "Beaucoup, peu, rien",
+    "lines": ["l'ensemble n°1 a beaucoup d'éléments.", "l'ensemble n°2 a peu d'éléments.", "l'ensemble n°3 n'a rien."],
+    "items": [
+      { "say": "Touche le panier qui a beaucoup de mangues.", "options": ["🥭x8", "🥭x2", "🧺"], "answer": 0 },
+      { "say": "Touche le panier qui a peu de mangues.", "options": ["🥭x8", "🥭x2", "🧺"], "answer": 1 },
+      { "say": "Touche le panier qui n'a rien.", "options": ["🥭x8", "🥭x2", "🧺"], "answer": 2 }
+    ]
+  },
+  {
+    "id": "r-2026-11-14-classer",
+    "date": "2026-11-14",
+    "subject": "maths",
+    "title": "Classer des ensembles",
+    "lines": ["voici des ensembles de triangles.", "je les classe par taille, puis par quantité."],
+    "items": [
+      { "say": "Quel ensemble a le plus de triangles ?", "options": ["🔺x2", "🔺x8", "🔺x3"], "answer": 1 },
+      { "say": "Quel ensemble a le moins de triangles ?", "options": ["🔺x2", "🔺x8", "🔺x3"], "answer": 0 },
+      { "say": "Quel triangle est le plus grand ?", "options": ["shape:triangle:#F97316", "t:🔺", "shape:triangle:#22C55E"], "answer": 0, "hint": "Regarde la taille, pas la couleur." }
+    ]
+  },
+  {
+    "id": "r-2026-11-16-pqrst",
+    "date": "2026-11-16",
+    "subject": "lecture",
+    "title": "L'alphabet : P Q R S T",
+    "letters": "P Q R S T",
+    "lines": ["P Q R S T", "mots acquis : porte, tableau, table, livre."]
+  },
+  {
+    "id": "r-2026-11-16-histoire",
+    "date": "2026-11-16",
+    "subject": "histoire",
+    "title": "Les jours de la semaine",
+    "lines": ["1. lundi", "2. mardi", "3. mercredi", "4. jeudi", "5. vendredi", "6. samedi", "7. dimanche"],
+    "items": [
+      { "say": "Quel jour vient après lundi ?", "options": ["big:mardi", "big:jeudi", "big:samedi"], "answer": 0 },
+      { "say": "Quel est le premier jour de la semaine ?", "options": ["big:dimanche", "big:lundi", "big:mercredi"], "answer": 1 },
+      { "say": "Quel jour vient après samedi ?", "options": ["big:vendredi", "big:lundi", "big:dimanche"], "answer": 2 },
+      { "say": "Combien y a-t-il de jours dans une semaine ?", "options": ["big:5", "big:7", "big:10"], "answer": 1 }
+    ],
+    "tip": "Chaque matin, demandez : « Quel jour sommes-nous ? Et demain ? »"
+  },
+  {
+    "id": "r-2026-11-17-lecture",
+    "date": "2026-11-17",
+    "subject": "lecture",
+    "title": "Je lis : la porte est ouverte",
+    "lines": ["la porte est ouverte.", "le tableau est noir.", "la table est ici.", "le livre est là-bas."]
+  },
+  {
+    "id": "r-2026-11-17-ist",
+    "date": "2026-11-17",
+    "subject": "ist",
+    "title": "Décrire les ciseaux",
+    "lines": ["✂️ les ciseaux ont :", "les lames,", "les branches,", "la vis (le pivot),", "les anneaux."],
+    "tip": "Montrez de vrais ciseaux (à bouts ronds) et touchez chaque partie ensemble : les lames, la vis, les branches, les anneaux."
+  },
+  {
+    "id": "r-2026-11-18-objets",
+    "date": "2026-11-18",
+    "subject": "ist",
+    "title": "Les objets techniques",
+    "lines": ["✂️ les ciseaux", "🔨 le marteau", "🔦 la lampe torche", "💻 l'ordinateur", "🚪 la porte", "la truelle du maçon"],
+    "items": [
+      { "say": "Touche les ciseaux.", "options": ["🔨", "✂️", "💻"], "answer": 1 },
+      { "say": "Touche le marteau.", "options": ["🔨", "🔦", "🚪"], "answer": 0 },
+      { "say": "Touche l'ordinateur.", "options": ["✂️", "🚪", "💻"], "answer": 2 },
+      { "say": "Touche la lampe torche.", "options": ["🔦", "🔨", "✂️"], "answer": 0 }
+    ]
+  },
+  {
+    "id": "r-2026-11-18-outils",
+    "date": "2026-11-18",
+    "subject": "lecture",
+    "title": "Les outils de l'écolier",
+    "lines": ["📖 le livre", "🎒 le cartable", "📓 le cahier", "🖊️ un stylo", "la gomme", "✏️ un crayon", "l'ardoise", "📏 la règle", "un taille-crayon"],
+    "items": [
+      { "say": "Touche le cartable.", "options": ["📖", "🎒", "✏️"], "answer": 1 },
+      { "say": "Touche la règle.", "options": ["📏", "🖊️", "📓"], "answer": 0 },
+      { "say": "Touche le livre.", "options": ["🎒", "📏", "📖"], "answer": 2 },
+      { "say": "Touche le crayon.", "options": ["✏️", "📓", "🎒"], "answer": 0 }
+    ],
+    "tip": "Ouvrez son cartable : elle sort chaque objet et dit son nom (« le cahier », « la gomme »…)."
+  },
+  {
+    "id": "r-2026-11-18-probleme",
+    "date": "2026-11-18",
+    "subject": "maths",
+    "title": "Trouver ce qui manque",
+    "lines": ["regarde bien les deux bonshommes.", "au deuxième, il manque un bras.", "je complète le dessin."],
+    "tip": "Dessinez un bonhomme en oubliant une partie (un bras, une oreille, un œil). Elle trouve ce qui manque et le dessine."
+  }
+]

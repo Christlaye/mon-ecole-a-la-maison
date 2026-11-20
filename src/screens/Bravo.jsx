@@ -11,7 +11,8 @@ export default function Bravo({ id }) {
   const a = getActivity(id, s);
   const lang = s.settings.audioLang;
   const list = allActivities(s);
-  const next = list[list.findIndex((x) => x.id === id) + 1];
+  const idx = list.findIndex((x) => x.id === id);
+  const next = idx >= 0 ? list[idx + 1] : null;
 
   useEffect(() => {
     chime('win');
@@ -41,12 +42,13 @@ export default function Bravo({ id }) {
       )}
 
       <div className="mt-2 grid w-full gap-3">
+        {a.revision && <Btn color="soleil" className="text-xl" onClick={() => go(a.back)}>📝 Retour à la révision</Btn>}
         {next && <Btn color="soleil" className="text-xl" onClick={() => go(`#/activite/${next.id}`)}>Activité suivante {next.icon} ➡️</Btn>}
         <div className="grid grid-cols-2 gap-3">
           <Btn color="blanc" onClick={() => go(`#/activite/${a.id}`)}>🔁 Rejouer</Btn>
           <Btn color="vert" onClick={() => go('#/')}>🏠 Accueil</Btn>
         </div>
-        <a href={`#/fiche/activite/${a.id}`} className="font-bold text-ciel underline">🖨️ Fiche à imprimer</a>
+        {!a.revision && <a href={`#/fiche/activite/${a.id}`} className="font-bold text-ciel underline">🖨️ Fiche à imprimer</a>}
       </div>
     </main>
   );

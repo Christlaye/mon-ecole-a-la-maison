@@ -3,6 +3,8 @@ import { useStore, currentProfile, totalStars } from '../lib/store.js';
 import { subjects, phrases, activityOfTheDay } from '../lib/content.js';
 import { playPhrase } from '../lib/audio.js';
 import { LangToggle } from '../components/ui.jsx';
+import { revisionsOfTheDay, revSubject } from '../lib/revisions.js';
+import { frDate } from './Revision.jsx';
 
 const tile = {
   ciel: 'bg-ciel text-white', terre: 'bg-terre text-white', vert: 'bg-vert text-white', violet: 'bg-violet text-white'
@@ -15,6 +17,7 @@ export default function Home() {
   const today = activityOfTheDay(s);
   const stars = totalStars(s);
   const w = phrases.welcome;
+  const revs = revisionsOfTheDay(s);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col gap-4 px-4 pb-6 pt-3">
@@ -41,6 +44,16 @@ export default function Home() {
             <span className="block text-sm font-black uppercase tracking-wide">☀️ {phrases.today.fr}</span>
             <span className="block text-2xl font-black leading-tight">{today.title.fr}</span>
             {lang !== 'fr' && <span className="block text-sm font-semibold">{phrases.today[lang]}</span>}
+          </span>
+        </a>
+      )}
+
+      {revs.length > 0 && (
+        <a href="#/revision" className="flex items-center gap-4 rounded-3xl bg-ciel p-4 text-white shadow-[0_6px_0_rgba(0,0,0,.18)]">
+          <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-white text-5xl">📝</span>
+          <span className="min-w-0">
+            <span className="block text-sm font-black uppercase tracking-wide">Révision du jour · {frDate(revs[0].date)}</span>
+            <span className="block text-2xl font-black leading-tight">{revs.length === 1 ? revs[0].title : revs.map((r) => revSubject(r.subject).icon).join(' ') + ` ${revs.length} leçons`}</span>
           </span>
         </a>
       )}

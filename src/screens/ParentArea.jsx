@@ -7,6 +7,8 @@ import languages from '../data/languages.json';
 import { TopBar, Btn, Card } from '../components/ui.jsx';
 import { go } from '../router.js';
 import Admin from './Admin.jsx';
+import { allRevisions, rawRevision, newRevisionId, saveRevision, deleteRevision, savePhoto, photoUrl, REV_SUBJECTS, revSubject, todayISO } from '../lib/revisions.js';
+import { frDate } from './Revision.jsx';
 
 const UNLOCK_KEY = 'mon-ecole-parent-unlock';
 const isUnlocked = () => { try { return Number(sessionStorage.getItem(UNLOCK_KEY) || 0) > Date.now(); } catch { return false; } };
@@ -52,7 +54,7 @@ function Gate({ onOk }) {
 }
 
 const TABS = [
-  ['suivi', '📊 Suivi'], ['profils', '👧🏾 Profils'], ['fiches', '🖨️ Fiches'], ['voix', '🎙️ Voix'], ['admin', '✏️ Activités'], ['reglages', '⚙️ Réglages']
+  ['suivi', '📊 Suivi'], ['profils', '👧🏾 Profils'], ['revisions', '📝 Révisions'], ['fiches', '🖨️ Fiches'], ['voix', '🎙️ Voix'], ['admin', '✏️ Activités'], ['reglages', '⚙️ Réglages']
 ];
 
 export default function ParentArea({ tab = 'suivi', editId }) {
@@ -71,6 +73,7 @@ export default function ParentArea({ tab = 'suivi', editId }) {
         {tab === 'profils' && <Profiles />}
         {tab === 'fiches' && <Sheets />}
         {tab === 'voix' && <Voices />}
+        {tab === 'revisions' && <Revisions />}
         {tab === 'admin' && <Admin editId={editId} />}
         {tab === 'reglages' && <Settings />}
       </div>
@@ -299,6 +302,116 @@ function Voices() {
         <h3 className="mt-1 font-black">Consignes des activités</h3>
         <ul className="flex flex-col gap-2">{slots.slice(11).map((x) => <VoiceRow key={x.id} {...x} lang={lang} has={keys.includes(clipKey(lang, x.id))} refresh={refresh} />)}</ul>
       </>}
+    </div>
+  );
+}
+
+function Thumb({ k, onRemove }) {
+  const [url, setUrl] = useState(null);
+  useEffect(() => { let u; photoUrl(k).then((x) => { u = x; setUrl(x); }); return () => u && URL.revokeObjectURL(u); }, [k]);
+  return (
+    <span className="relative inline-block">
+      {url ? <img src={url} alt="" className="h-24 w-24 rounded-xl object-cover" /> : <span className="block h-24 w-24 rounded-xl bg-slate-200" />}
+      <button onClick={onRemove} className="absolute -right-2 -top-2 grid h-8 w-8 place-items-center rounded-full bg-terre text-white shadow" aria-label="Retirer la photo">✕</button>
+    </span>
+  );
+}
+
+function RevisionForm({ initial, isNew, onDone }) {
+  const [r, setR] = useState(() => ({ ...initial, linesText: (initial.lines || []).join('\n') }));
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const fileRef = useRef();
+  const set = (patch) => setR((x) => ({ ...x, ...patch }));
+  const addPhotos = async (e) => {
+    const files = [...e.target.files]; e.target.value = '';
+    if (!files.length) return;
+    setBusy(true); setErr('');
+    try { const keys = []; for (const f of files) keys.push(await savePhoto(r.id, f)); set({ photos: [...(r.photos || []), ...keys] }); }
+    catch { setErr('Cette photo n’a pas pu être ajoutée.'); }
+    setBusy(false);
+  };
+  const removePhoto = async (k) => { await clips.del(k); set({ photos: r.photos.filter((x) => x !== k) }); };
+  const save = () => {
+    const lines = r.linesText.split('\n').map((l) => l.trim()).filter(Boolean);
+    const { linesText, seed, ...rest } = r;
+    saveRevision({ ...rest, title: r.title.trim() || revSubject(r.subject).label, lines, letters: (r.letters || '').trim(), tip: (r.tip || '').trim(), createdAt: r.createdAt || Date.now() });
+    onDone(r.id);
+  };
+  const cancel = async () => { if (isNew) for (const k of r.photos || []) await clips.del(k); onDone(null); };
+  const field = 'mt-1 block w-full rounded-xl border-2 border-slate-200 p-2 text-base';
+  return (
+    <Card>
+      <h3 className="text-lg font-black">{isNew ? '➕ Nouvelle révision' : '✏️ Modifier la révision'}</h3>
+      <div className="mt-2 grid grid-cols-2 gap-2">
+        <label className="text-sm font-bold">Date<input type="date" value={r.date} onChange={(e) => set({ date: e.target.value })} className={field} /></label>
+        <label className="text-sm font-bold">Matière
+          <select value={r.subject} onChange={(e) => set({ subject: e.target.value })} className={field}>
+            {REV_SUBJECTS.map((x) => <option key={x.id} value={x.id}>{x.icon} {x.label}</option>)}
+          </select>
+        </label>
+      </div>
+      <label className="mt-2 block text-sm font-bold">Titre de la leçon
+        <input value={r.title} onChange={(e) => set({ title: e.target.value })} placeholder="Ex. : Les jours de la semaine" className={field} />
+      </label>
+      <div className="mt-3">
+        <p className="text-sm font-bold">📷 Photos du tableau ou du cahier</p>
+        <div className="mt-2 flex flex-wrap gap-3">
+          {(r.photos || []).map((k) => <Thumb key={k} k={k} onRemove={() => removePhoto(k)} />)}
+          <button onClick={() => fileRef.current.click()} disabled={busy} className="grid h-24 w-24 place-items-center rounded-xl border-2 border-dashed border-slate-400 text-center text-sm font-bold disabled:opacity-50">{busy ? '…' : <>📷<br />Ajouter</>}</button>
+          <input ref={fileRef} type="file" accept="image/*" multiple className="hidden" onChange={addPhotos} />
+        </div>
+        {err && <p className="mt-1 text-sm text-terre">{err}</p>}
+        <p className="mt-1 text-xs text-slate-500">Les photos restent sur ce téléphone (elles sont réduites pour prendre peu de place).</p>
+      </div>
+      <label className="mt-3 block text-sm font-bold">✍️ Ce qui est écrit (une ligne par phrase ou par mot)
+        <textarea value={r.linesText} onChange={(e) => set({ linesText: e.target.value })} rows={6} placeholder={'la porte est ouverte.\nle tableau est noir.'} className={field} />
+      </label>
+      <p className="mt-1 text-xs text-slate-500">Votre enfant pourra écouter chaque phrase et chaque mot. Un petit jeu « Touche le mot » est créé avec ces mots. Écrivez {'{nom}'} pour mettre son prénom.</p>
+      <label className="mt-3 block text-sm font-bold">🔤 Lettres étudiées (facultatif)
+        <input value={r.letters || ''} onChange={(e) => set({ letters: e.target.value.toUpperCase() })} placeholder="P Q R S T" className={field} />
+      </label>
+      <label className="mt-3 block text-sm font-bold">👨🏾‍👧🏾 Idée hors écran (facultatif)
+        <textarea value={r.tip || ''} onChange={(e) => set({ tip: e.target.value })} rows={2} placeholder="Ex. : chaque matin, demandez quel jour on est." className={field} />
+      </label>
+      {r.items?.length > 0 && <p className="mt-2 text-xs text-slate-500">Cette révision a aussi {r.items.length} question(s) à images, gardées telles quelles.</p>}
+      <div className="mt-4 flex gap-2">
+        <button onClick={save} disabled={busy || (!r.title.trim() && !r.linesText.trim() && !(r.photos || []).length)} className="flex-1 rounded-full bg-vert px-4 py-3 font-black text-white disabled:opacity-40">✅ Enregistrer</button>
+        <button onClick={cancel} className="rounded-full bg-slate-100 px-4 py-3 font-bold">Annuler</button>
+      </div>
+    </Card>
+  );
+}
+
+function Revisions() {
+  const s = useStore();
+  const [editing, setEditing] = useState(null); // { initial, isNew }
+  const [msg, setMsg] = useState('');
+  const list = allRevisions(s);
+  const startNew = () => setEditing({ isNew: true, initial: { id: newRevisionId(), date: todayISO(), subject: 'lecture', title: '', lines: [], letters: '', photos: [], tip: '' } });
+  const startEdit = (id) => setEditing({ isNew: false, initial: { photos: [], ...rawRevision(id, s) } });
+  const done = (id) => { setEditing(null); if (id) setMsg('Révision enregistrée ✅'); window.scrollTo(0, 0); };
+  if (editing) return <RevisionForm {...editing} onDone={done} />;
+  return (
+    <div className="flex flex-col gap-3">
+      <Card>
+        <p className="text-sm">Ajoutez ici la leçon du jour envoyée par la maîtresse : une photo du tableau et ce qui est écrit. Elle apparaît tout de suite sur l’accueil, dans « Révision du jour ». La plus récente (jusqu’à aujourd’hui) est affichée en premier.</p>
+        <button onClick={startNew} className="mt-3 w-full rounded-full bg-soleil px-4 py-3 text-lg font-black">➕ Nouvelle révision</button>
+        {msg && <p className="mt-2 text-center font-bold text-vert">{msg}</p>}
+      </Card>
+      <ul className="flex flex-col gap-2">
+        {list.map((r) => (
+          <li key={r.id} className="flex items-center gap-2 rounded-2xl bg-white p-3 shadow-sm">
+            <span className="text-2xl">{revSubject(r.subject).icon}</span>
+            <a href={`#/revision/${r.id}`} className="min-w-0 flex-1">
+              <span className="block text-xs text-slate-500">{frDate(r.date)}{r.date > todayISO() ? ' (à venir)' : ''}{r.seed && !s.revisions?.[r.id] ? ' · exemple' : ''}{r.photos?.length ? ` · 📷 ${r.photos.length}` : ''}</span>
+              <span className="block truncate font-bold">{r.title}</span>
+            </a>
+            <button onClick={() => startEdit(r.id)} className="rounded-full bg-slate-100 px-3 py-2" aria-label="Modifier">✏️</button>
+            <button onClick={async () => { if (confirm(`Supprimer « ${r.title} » ?`)) { await deleteRevision(r); setMsg('Révision supprimée.'); } }} className="rounded-full bg-slate-100 px-3 py-2" aria-label="Supprimer">🗑️</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

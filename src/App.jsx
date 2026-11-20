@@ -11,6 +11,7 @@ import Stars from './screens/Stars.jsx';
 import ParentArea from './screens/ParentArea.jsx';
 import Admin from './screens/Admin.jsx';
 import Print from './screens/Print.jsx';
+import Revision from './screens/Revision.jsx';
 
 export default function App() {
   const r = useRoute();
@@ -25,6 +26,7 @@ export default function App() {
     case 'activite': return <Activity key={a} id={a} />;
     case 'bravo': return <Bravo id={a} />;
     case 'etoiles': return <Stars />;
+    case 'revision': return <Revision key={a || 'jour'} id={a} />;
     case 'parent': return <ParentArea tab={a} />;
     case 'admin': return <ParentArea tab="admin" editId={a} />;
     case 'fiche': return <Print kind={a} id={b} />;
