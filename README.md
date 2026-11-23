@@ -1,4 +1,4 @@
-# Mon École à la Maison – CI Sénégal
+# Mon École à la Maison – Sénégal
 
 Application web progressive (PWA) pour renforcer à la maison les apprentissages du **CI** (Sénégal), pour un enfant de 6 ans accompagné d'un parent. Séances courtes (10 à 20 min), sans note, sans publicité, sans compte, et utilisable **hors ligne** après le premier chargement.
 
