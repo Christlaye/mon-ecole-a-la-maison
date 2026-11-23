@@ -54,6 +54,10 @@ Le texte `{nom}` est remplacé par le prénom de l'enfant (il devient le héros 
 
 Visuels sans image à télécharger (léger) : emojis et petits codes — `🥭x3` (3 mangues), `coin:100` / `bill:1000` (francs CFA), `shape:circle:#DC2626`, `color:#16A34A`, `big:ma` (grosses lettres), `scene:sous:⚽:🪑` (position), `t:Une phrase.` (texte).
 
+### Niveaux (CI, CP, CE1)
+
+Le profil de l'enfant propose CI, CP et CE1. Chaque activité peut porter un champ `"level": "CP"` (ou `"CE1"`) ; sans ce champ, elle est du CI. L'enfant voit les activités de son niveau ; tant qu'un niveau n'a pas encore d'activités, il voit celles du CI avec un message « arrivent bientôt ». L'éditeur d'activités (Espace parent) a un champ Niveau. Les anciens profils « Grande section » passent au CI.
+
 ## Révision du jour
 
 - Accueil → **📝 Révision du jour** : les leçons de la date la plus récente (jusqu'à aujourd'hui), puis les révisions précédentes.

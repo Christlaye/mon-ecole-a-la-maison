@@ -19,7 +19,9 @@ function load() {
     const raw = localStorage.getItem(KEY);
     if (!raw) return defaults();
     const d = JSON.parse(raw);
-    return { ...defaults(), ...d, settings: { ...defaults().settings, ...(d.settings || {}) } };
+    // « Grande section » n'existe plus : ces profils passent au CI.
+    const profiles = (d.profiles || []).map((p) => (['CI', 'CP', 'CE1'].includes(p.level) ? p : { ...p, level: 'CI' }));
+    return { ...defaults(), ...d, profiles, settings: { ...defaults().settings, ...(d.settings || {}) } };
   } catch {
     return defaults();
   }
