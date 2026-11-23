@@ -3,9 +3,10 @@ import { addProfile, updateProfile, useStore, currentProfile, selectProfile } fr
 import { Btn } from '../components/ui.jsx';
 import { go } from '../router.js';
 import { speak } from '../lib/audio.js';
+import { LEVELS, normLevel } from '../lib/content.js';
 
 export const AVATARS = ['🦁', '🐘', '🦒', '🐢', '🐟', '🐓', '🐑', '🦋', '🌞', '🥭', '⚽', '🚀'];
-export const LEVELS = ['CI', 'Grande section', 'CP'];
+export { LEVELS };
 
 export default function ProfileSetup({ edit }) {
   const profiles = useStore((s) => s.profiles);
@@ -13,7 +14,7 @@ export default function ProfileSetup({ edit }) {
   const editing = edit && cur;
   const [name, setName] = useState(editing ? cur.name : '');
   const [avatar, setAvatar] = useState(editing ? cur.avatar : '🦁');
-  const [level, setLevel] = useState(editing ? cur.level : 'CI');
+  const [level, setLevel] = useState(editing ? normLevel(cur.level) : 'CI');
 
   const save = () => {
     if (!name.trim()) return;
@@ -68,6 +69,7 @@ export default function ProfileSetup({ edit }) {
             <button key={l} onClick={() => setLevel(l)} className={`flex-1 rounded-2xl px-2 py-3 font-bold ${level === l ? 'bg-vert text-white' : 'bg-white'}`}>{l}</button>
           ))}
         </div>
+        {level !== 'CI' && <p className="mt-1 text-xs text-slate-500">Les activités du {level} arrivent bientôt. En attendant, l’enfant fait celles du CI.</p>}
       </div>
 
       <Btn onClick={save} disabled={!name.trim()} className="mt-2 text-xl">{editing ? 'Enregistrer' : 'C’est parti ! 🚀'}</Btn>

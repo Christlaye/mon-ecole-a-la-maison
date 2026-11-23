@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png', 'icons/*.svg', 'audio/**/*'],
       manifest: {
-        name: 'Mon École à la Maison – CI Sénégal',
+        name: 'Mon École à la Maison – Sénégal',
         short_name: 'Mon École',
-        description: 'Petites activités du CI à faire à la maison, avec un parent.',
+        description: 'Petites activités du CI au CE1 à faire à la maison, avec un parent.',
         lang: 'fr',
         start_url: './',
         scope: './',

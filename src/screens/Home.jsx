@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStore, currentProfile, totalStars } from '../lib/store.js';
-import { subjects, phrases, activityOfTheDay } from '../lib/content.js';
+import { subjects, phrases, activityOfTheDay, levelInfo } from '../lib/content.js';
 import { playPhrase } from '../lib/audio.js';
 import { LangToggle } from '../components/ui.jsx';
 import { revisionsOfTheDay, revSubject } from '../lib/revisions.js';
@@ -18,6 +18,7 @@ export default function Home() {
   const stars = totalStars(s);
   const w = phrases.welcome;
   const revs = revisionsOfTheDay(s);
+  const lv = levelInfo(s);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col gap-4 px-4 pb-6 pt-3">
@@ -36,6 +37,10 @@ export default function Home() {
           {lang !== 'fr' && <p className="text-base font-semibold text-slate-600">{w[lang]}</p>}
         </div>
       </section>
+
+      {!lv.ready && (
+        <p className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-slate-600">📚 Les activités du {lv.wanted} arrivent bientôt. En attendant, {p.name} révise le CI.</p>
+      )}
 
       {today && (
         <a href={`#/activite/${today.id}`} className="flex items-center gap-4 rounded-3xl bg-soleil p-4 shadow-[0_6px_0_rgba(0,0,0,.18)]">

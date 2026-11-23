@@ -1,4 +1,4 @@
-# Mon École à la Maison – CI Sénégal
+# Mon École à la Maison – Sénégal
 
 Application web progressive (PWA) pour renforcer à la maison les apprentissages du **CI** (Sénégal), pour un enfant de 6 ans accompagné d'un parent. Séances courtes (10 à 20 min), sans note, sans publicité, sans compte, et utilisable **hors ligne** après le premier chargement.
 
@@ -53,6 +53,10 @@ Ajouter une activité : copier un bloc dans `activities.json` (ou passer par l'�
 Le texte `{nom}` est remplacé par le prénom de l'enfant (il devient le héros des histoires), `{PRENOM}` par son prénom en majuscules.
 
 Visuels sans image à télécharger (léger) : emojis et petits codes — `🥭x3` (3 mangues), `coin:100` / `bill:1000` (francs CFA), `shape:circle:#DC2626`, `color:#16A34A`, `big:ma` (grosses lettres), `scene:sous:⚽:🪑` (position), `t:Une phrase.` (texte).
+
+### Niveaux (CI, CP, CE1)
+
+Le profil de l'enfant propose CI, CP et CE1. Chaque activité peut porter un champ `"level": "CP"` (ou `"CE1"`) ; sans ce champ, elle est du CI. L'enfant voit les activités de son niveau ; tant qu'un niveau n'a pas encore d'activités, il voit celles du CI avec un message « arrivent bientôt ». L'éditeur d'activités (Espace parent) a un champ Niveau. Les anciens profils « Grande section » passent au CI.
 
 ## Révision du jour
 

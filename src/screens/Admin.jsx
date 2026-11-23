@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useStore, saveCustomActivity, deleteCustomActivity } from '../lib/store.js';
-import { allActivities, subjects, isBuiltIn, builtInById, getActivity } from '../lib/content.js';
+import { useStore, saveCustomActivity, deleteCustomActivity, getState } from '../lib/store.js';
+import { allActivities, subjects, isBuiltIn, builtInById, getActivity, LEVELS, actLevel, levelInfo } from '../lib/content.js';
 import { engineLabels } from '../engines/index.js';
 import Visual from '../components/Visual.jsx';
 import { Card, Btn } from '../components/ui.jsx';
 import { go } from '../router.js';
 
 const blank = (type = 'choice') => ({
-  id: 'perso-' + Date.now().toString(36), week: 1, subject: 'francais', icon: '⭐', notion: '',
+  id: 'perso-' + Date.now().toString(36), level: levelInfo(getState()).wanted, week: 1, subject: 'francais', icon: '⭐', notion: '',
   title: { fr: '', wo: '' }, type,
   instruction: { fr: '', wo: '' },
   items: type === 'count' ? [{ mode: 'tap', object: '🥭', n: 3, options: [2, 3, 4], label: 'mangues' }]
@@ -19,7 +19,7 @@ const blank = (type = 'choice') => ({
 export default function Admin({ editId }) {
   const s = useStore();
   if (editId) return <Editor key={editId} id={editId} />;
-  const list = allActivities(s);
+  const list = allActivities(s, { allLevels: true });
   const exportCustom = () => {
     const blob = new Blob([JSON.stringify(Object.values(s.custom), null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'mes-activites.json'; a.click();
@@ -39,7 +39,7 @@ export default function Admin({ editId }) {
         {list.map((a) => (
           <li key={a.id} className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm">
             <span className="text-3xl">{a.icon}</span>
-            <span className="flex-1 text-sm"><b>{a.title.fr || '(sans titre)'}</b><br /><span className="text-slate-500">S{a.week} · {subjects.find((x) => x.id === a.subject)?.label.fr} · {engineLabels[a.type]}{s.custom[a.id] ? (isBuiltIn(a.id) ? ' · modifiée' : ' · créée par vous') : ''}</span></span>
+            <span className="flex-1 text-sm"><b>{a.title.fr || '(sans titre)'}</b><br /><span className="text-slate-500">{actLevel(a)} · S{a.week} · {subjects.find((x) => x.id === a.subject)?.label.fr} · {engineLabels[a.type]}{s.custom[a.id] ? (isBuiltIn(a.id) ? ' · modifiée' : ' · créée par vous') : ''}</span></span>
             <a href={`#/admin/${a.id}`} className="rounded-full bg-slate-100 px-3 py-1 text-sm font-bold">Modifier</a>
             <a href={`#/activite/${a.id}`} className="rounded-full bg-vert px-3 py-1 text-sm font-bold text-white">▶️</a>
           </li>
@@ -85,7 +85,8 @@ function Editor({ id }) {
           <textarea value={jsonText} onChange={(e) => setJsonText(e.target.value)} rows={22} className={`${inp} font-mono text-xs`} spellCheck={false} />
         ) : (
           <>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-4 gap-2">
+              <Field label="Niveau"><select value={actLevel(a)} onChange={(e) => set({ level: e.target.value })} className={inp}>{LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}</select></Field>
               <Field label="Icône"><input value={a.icon} onChange={(e) => set({ icon: e.target.value })} className={`${inp} text-center text-2xl`} /></Field>
               <Field label="Semaine"><input type="number" min="1" max="52" value={a.week} onChange={(e) => set({ week: e.target.value })} className={inp} /></Field>
               <Field label="Matière"><select value={a.subject} onChange={(e) => set({ subject: e.target.value })} className={inp}>{subjects.map((x) => <option key={x.id} value={x.id}>{x.label.fr}</option>)}</select></Field>
